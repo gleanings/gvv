@@ -3,7 +3,7 @@ import { dog } from './../dog';
 import { runOtherCode } from 'a-node-tools';
 import { command } from '../command';
 import { gitError } from '../utils';
-import { isEmptyString, isFalse, isUndefined } from 'a-type-of-js';
+import { isEmptyString, isUndefined } from 'a-type-of-js';
 import { dataStore } from 'src/data-store';
 
 /**
@@ -19,20 +19,9 @@ export async function gitUserEmail() {
   const globalUserEmail = await runOtherCode({ code, cwd });
 
   dog('全局仓库的邮箱', code, globalUserEmail);
-  if ([localUserEmail.success, globalUserEmail.success].some(e => isFalse(e))) {
-    dog.error(
-      '获取用户本地的 git 的邮箱配置失败',
-      localUserEmail,
-      globalUserEmail,
-    );
-    return await gitError(localUserEmail.error || globalUserEmail.error);
-  }
 
-  if (
-    [localUserEmail.data, globalUserEmail.data].every(e => isEmptyString(e))
-  ) {
+  if ([localUserEmail.data, globalUserEmail.data].every(e => isEmptyString(e)))
     return await setUserEmail();
-  }
 
   dog('当前使用邮箱 📮 数据', localUserEmail, globalUserEmail);
 }

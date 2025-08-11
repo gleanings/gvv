@@ -23,18 +23,14 @@ export async function gitUser() {
   /**  全局的用户名  */
   const globalUserName = await runOtherCode({ code, cwd });
   dog('全局配置的用户名', code, globalUserName);
-  if (!localUserName.success || !globalUserName.success) {
-    dog.error('未获取到 git 用户名配置', localUserName, globalUserName);
-    return await gitError(localUserName.error || globalUserName.error);
-  }
 
   if (
     [localUserName.data, globalUserName.data].every(e =>
       isBusinessEmptyString(e),
     )
-  ) {
+  )
     return await setUserName();
-  }
+
   dog('获取到本地个人信息', localUserName, globalUserName);
 }
 
