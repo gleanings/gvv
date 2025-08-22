@@ -1,7 +1,7 @@
 {
   "name": "gvv",
   "type": "module",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": true,
   "description": "一键 git 提交: git add + git commit + git push",
   "scripts": {
@@ -23,9 +23,9 @@
   "license": "MIT",
   "dependencies": {
     "@qqi/log": "^0.1.1",
-    "a-command": "^2.3.15",
+    "a-command": "^2.3.16",
     "a-js-tools": "^1.0.12",
-    "a-node-tools": "^4.2.19",
+    "a-node-tools": "^4.2.20",
     "a-type-of-js": "^1.0.7",
     "color-pen": "^2.0.13"
   },
@@ -38,28 +38,28 @@
   "devDependencies": {
     "@eslint/js": "^9.33.0",
     "@qqi/check-version": "^1.0.5",
-    "@qqi/rollup-external": "^1.0.10",
+    "@qqi/rollup-external": "^1.0.11",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.4",
-    "@types/node": "^24.2.1",
+    "@types/node": "^24.3.0",
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-jsdoc": "^53.0.1",
+    "eslint-plugin-jsdoc": "^54.1.1",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
-    "jja": "^2.3.17",
+    "jja": "^2.3.21",
     "lint-staged": "^16.1.5",
     "pjj": "^1.0.4",
     "prettier": "^3.6.2",
-    "rollup": "^4.46.2",
+    "rollup": "^4.47.1",
     "rollup-plugin-cleanup": "^3.2.1",
     "rollup-plugin-copy": "^3.5.0",
     "tslib": "^2.8.1",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.39.1",
-    "vjj": "^1.0.10"
+    "typescript-eslint": "^8.40.0",
+    "vjj": "^1.0.11"
   }
 }

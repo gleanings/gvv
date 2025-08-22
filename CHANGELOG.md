@@ -1,5 +1,25 @@
 # gvv
 
+## v0.1.8 (2025-8-23)
+
+- 优化了文件路径中包含中文时的情况，这种情况将导致包含中文的路径导致无法被 `git add [文件名] [文件名]` 提交，因为文件名因包含非 ASCII 字符而被转化为了 8 进制形式
+
+```js
+function decodeOctalEscapes(str) {
+  const octalPattern = /\\(\d{3})/g;
+  return str
+    .replace(octalPattern, (_, octalStr) => {
+      const byteValue = parseInt(octalStr, 8);
+      return String.fromCharCode(byteValue);
+    })
+    .split('')
+    .map(c => c.charCodeAt(0))
+    .buffer.slice(0)
+    .new(Uint8Array)
+    .buffer.toString('utf8');
+}
+```
+
 ## v0.1.7 (2025-8-12)
 
 - 修复在新设备没有配置 `git` 的 `user.name` 和 `user.email` 时因返回值的判断错误（额，“成功才输出”）而导致的直接提出
