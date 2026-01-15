@@ -3,8 +3,7 @@ import { _p, runOtherCode } from 'a-node-tools';
 import { isString, isFalse, isUndefined } from 'a-type-of-js';
 import { greenPen } from 'color-pen';
 import { command } from '../command';
-import { markVoluntaryWithdrawal } from '../data-store/index';
-import { gitError } from '../utils';
+import { checkIsSIGINT, gitError, markVoluntaryWithdrawal } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 
@@ -16,7 +15,7 @@ import { dog } from './../dog';
 export async function gitInitialized() {
   const code = 'git status';
   const status = await runOtherCode({ code, cwd });
-
+  await checkIsSIGINT(status);
   dog('gitStatus: ', code, status);
 
   if (status.success) {
@@ -54,8 +53,7 @@ export async function initializeGit() {
   });
 
   if (isUndefined(result)) {
-    markVoluntaryWithdrawal();
-    return await gitError('好的，正在退出');
+    await markVoluntaryWithdrawal();
   }
 
   // 用户选择退出

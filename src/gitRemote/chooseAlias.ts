@@ -1,7 +1,6 @@
 import { selection } from 'a-command';
 import { isEmptyString, isUndefined } from 'a-type-of-js';
-import { markVoluntaryWithdrawal } from '../data-store/index';
-import { gitError } from '../utils';
+import { gitError, markVoluntaryWithdrawal } from '../utils';
 import { dog } from './../dog';
 import { setAlias } from './setAlias';
 
@@ -26,8 +25,9 @@ export async function chooseAlias(remoteAliases: { [x: string]: string }) {
   });
 
   if (isUndefined(result)) {
-    markVoluntaryWithdrawal();
-    return await gitError('您选择了退出，正在做退出前的清理，请稍等');
+    return await markVoluntaryWithdrawal(
+      '您选择了退出，正在做退出前的清理，请稍等',
+    );
   }
 
   dog('选择远程库别名', result);

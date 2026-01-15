@@ -8,7 +8,7 @@
  * @copyright 2026 ©️ MrMudBean
  * @since 2026-01-15 11:09
  * @version 1.0.0
- * @lastModified 2026-01-15 22:15
+ * @lastModified 2026-01-16 00:49
  */
 import { isFalse } from 'a-type-of-js';
 import { command } from './command';
@@ -30,6 +30,9 @@ import { checkTags } from './tag/checkTags';
  * 主程序入口
  */
 export async function main(): Promise<void> {
+  // if (dun) {
+  //   await chooseForceOr();
+  // }
   onExit();
   // 在一开始的时候，使用的 `a-node-tools` 为 0.1.1 版本
   // 在该版本的 `runOtherCode` 未移除 process.on('exit') 监听，导致需要该配置，现在可移除

@@ -1,8 +1,7 @@
 import { question } from 'a-command';
 import { runOtherCode } from 'a-node-tools';
 import { isEmptyString, isUndefined } from 'a-type-of-js';
-import { markVoluntaryWithdrawal } from '../data-store/index';
-import { gitError } from '../utils';
+import { checkIsSIGINT, gitError, markVoluntaryWithdrawal } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 
@@ -13,11 +12,12 @@ export async function gitUserEmail() {
   let code = 'git config user.email';
   /**  本地仓库的用户名  */
   const localUserEmail = await runOtherCode({ code, cwd });
+  await checkIsSIGINT(localUserEmail);
   dog('本地仓库的名', code, localUserEmail);
   code = 'git config --global user.email';
   /**  全局的用户名  */
   const globalUserEmail = await runOtherCode({ code, cwd });
-
+  await checkIsSIGINT(globalUserEmail);
   dog('全局仓库的邮箱', code, globalUserEmail);
 
   if ([localUserEmail.data, globalUserEmail.data].every(e => isEmptyString(e)))
@@ -38,8 +38,7 @@ export async function setUserEmail() {
   });
 
   if (isUndefined(email)) {
-    markVoluntaryWithdrawal();
-    return await gitError('您选择了退出，请稍等，正在清理');
+    return await markVoluntaryWithdrawal();
   }
 
   if (isEmptyString(email)) {
@@ -47,6 +46,7 @@ export async function setUserEmail() {
   } else {
     const code = `git config --global user.email "${email}"`;
     const result = await runOtherCode({ code, cwd });
+    await checkIsSIGINT(result);
     dog('设置用户的名', email, code, result);
   }
 }

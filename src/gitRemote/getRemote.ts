@@ -3,7 +3,7 @@ import { isBusinessEmptyString, isZero } from 'a-type-of-js';
 import { magentaPen } from 'color-pen';
 import { commandParameters } from '../data-store/commandParameters';
 import { gitInfo } from '../data-store/gitInfo';
-import { gitError } from '../utils';
+import { checkIsSIGINT, gitError } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 import { chooseAlias } from './chooseAlias';
@@ -19,6 +19,7 @@ export async function getRemote() {
   const code = 'git remote -v';
   /**  获取远程仓库信息  */
   const result = await runOtherCode({ code, cwd });
+  await checkIsSIGINT(result);
   dog('获取远端的库信息', code, result);
   // 获取远程仓库信息 失败
   if (!result.success) {

@@ -3,6 +3,7 @@ import { isEmptyString } from 'a-type-of-js';
 import { randomPen } from 'color-pen';
 import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
+import { checkIsSIGINT } from '../utils';
 import { dog, dun } from './../dog';
 import { trackedButNotStaged } from './track-stag-area';
 
@@ -29,6 +30,7 @@ export async function add() {
     const code = 'git add --update';
     // 将本地未添加追踪的文件添加追踪（将直接放置到暂存区中）
     const result = await runOtherCode({ code, cwd });
+    await checkIsSIGINT(result);
     dog('判断当前是否存在尚未添加到暂存区的已追踪的修改文件', code, result);
   }
 }

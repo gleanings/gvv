@@ -29,8 +29,3 @@ export const dataStore: DateStore = {
   },
   voluntaryWithdrawal: false,
 };
-
-/** 标记主动退出  */
-export function markVoluntaryWithdrawal() {
-  dataStore.voluntaryWithdrawal = true;
-}

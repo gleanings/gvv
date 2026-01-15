@@ -1,7 +1,7 @@
 import { runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
 import { dataStore } from '../data-store';
-import { gitError } from '../utils';
+import { checkIsSIGINT, gitError } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 
@@ -10,7 +10,7 @@ export async function verifyRemoteUrl() {
   const { gitInfo } = dataStore;
   const code = `git ls-remote --heads ${gitInfo.url}`;
   const result = await runOtherCode({ code, cwd });
-
+  await checkIsSIGINT(result);
   dog('校验当前远程仓库地址的正确性 ', code, result);
 
   if (isFalse(result.success)) {

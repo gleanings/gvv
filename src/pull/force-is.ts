@@ -2,8 +2,7 @@ import { selection } from 'a-command';
 import { isFalse, isUndefined, isZero } from 'a-type-of-js';
 import { blinkPen, brightRedPen, greenPen } from 'color-pen';
 import { commandParameters } from '../data-store/commandParameters';
-import { markVoluntaryWithdrawal } from '../data-store/index';
-import { gitError } from '../utils';
+import { markVoluntaryWithdrawal } from '../utils';
 /**
  * ## 是否是否强制推送而跳过当前的拉取
  */
@@ -33,8 +32,7 @@ export async function isForce(): Promise<boolean> {
   });
 
   if (isUndefined(result) || result === 2) {
-    markVoluntaryWithdrawal();
-    return await gitError('好的，您选择了退出，正在做退出前最后的处理');
+    await markVoluntaryWithdrawal('好的，您选择了退出，正在做退出前最后的处理');
   }
 
   return isZero(result);

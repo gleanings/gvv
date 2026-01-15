@@ -2,9 +2,8 @@ import { _p, runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
 import { cwd } from '../data-store/cwd';
 import { gitInfo } from '../data-store/gitInfo';
-import { markVoluntaryWithdrawal } from '../data-store/index';
 import { dog } from '../dog';
-import { gitError } from '../utils';
+import { checkIsSIGINT, gitError, markVoluntaryWithdrawal } from '../utils';
 
 /**
  *  执行弹出储存的
@@ -16,7 +15,7 @@ export async function execStashPop() {
   }
   const code = 'git stash pop';
   const result = await runOtherCode({ code, cwd });
-
+  await checkIsSIGINT(result);
   dog('将储存区的文件取出', code, result);
   if (isFalse(result.success)) {
     if (
@@ -25,8 +24,7 @@ export async function execStashPop() {
       )
     ) {
       gitInfo.stashed = false; // 释放状态
-      markVoluntaryWithdrawal();
-      return await gitError('当前存在冲突，请先处理完冲突再继续');
+      await markVoluntaryWithdrawal('当前存在冲突，请先处理完冲突再继续');
     }
 
     dog.error('取出暂存文件失败');

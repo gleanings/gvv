@@ -3,7 +3,7 @@ import { runOtherCode } from 'a-node-tools';
 import { isEmptyString, isFalse, isUndefined } from 'a-type-of-js';
 import { dataStore } from '../data-store/index';
 import { dog } from '../dog';
-import { gitError } from '../utils';
+import { checkIsSIGINT, gitError } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { unTrackedFiles } from './track-stag-area';
 
@@ -57,6 +57,7 @@ async function addTrack(untrackedFileList: string[]) {
   }
   const code = `git add "${result.join('" "')}"`;
   const response = await runOtherCode({ code, cwd });
+  await checkIsSIGINT(response);
   dog('是否将未追踪的文件添加到追踪区', result, code, response);
   if (isFalse(response.success)) {
     return await gitError('执行', response.error || response.data);

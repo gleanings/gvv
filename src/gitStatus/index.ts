@@ -1,4 +1,5 @@
 import { runOtherCode } from 'a-node-tools';
+import { checkIsSIGINT } from '../utils';
 import { add } from './add';
 import { stagingArea } from './commit';
 import { gitInitialized } from './init';
@@ -18,7 +19,9 @@ export async function gitStatus(): Promise<void> {
   // 检测当前工作区是否 git 初始化
   await gitInitialized();
   // 将中文文件名输出为中文，防止因为文件路径包含中文而导致的错误
-  await runOtherCode('git config --global core.quotepath false');
+  await checkIsSIGINT(
+    await runOtherCode('git config --global core.quotepath false'),
+  );
   // 将已追踪修改的文件添加到暂存区
   await add();
   // 检测 git 是否有未追踪的文件

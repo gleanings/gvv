@@ -1,10 +1,10 @@
 import { runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
 import { brightRedPen, redPen } from 'color-pen';
-import { dataStore, markVoluntaryWithdrawal } from '../data-store';
+import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
 import { dog } from '../dog';
-import { gitError } from '../utils';
+import { checkIsSIGINT, gitError } from '../utils';
 import { waiting } from '../waiting';
 
 /**
@@ -30,11 +30,7 @@ export async function execFetchTag() {
     cwd,
   });
   dog('执行拉起线上标签', code, result);
-
-  if (result.isSIGINT) {
-    markVoluntaryWithdrawal();
-    return await gitError('稍等，这就退出');
-  }
+  await checkIsSIGINT(result);
 
   if (isFalse(result.success)) {
     if (/fatal:\s*repository\s*'.*'\s*not\s*found/i.test(result.error)) {

@@ -1,8 +1,8 @@
 import { question } from 'a-command';
 import { _p } from 'a-node-tools';
 import { isEmptyString, isUndefined } from 'a-type-of-js';
-import { dataStore, markVoluntaryWithdrawal } from '../data-store';
-import { gitError } from '../utils';
+import { dataStore } from '../data-store';
+import { gitError, markVoluntaryWithdrawal } from '../utils';
 
 /** ## 配置远程库的地址 */
 export async function waitInputRemoteUrl() {
@@ -16,8 +16,7 @@ export async function waitInputRemoteUrl() {
   });
 
   if (isUndefined(result)) {
-    markVoluntaryWithdrawal();
-    return await gitError('您选择了退出，即将退出');
+    return await markVoluntaryWithdrawal();
   }
 
   if ([isEmptyString, isUndefined].some(e => e(result))) {

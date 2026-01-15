@@ -4,6 +4,7 @@ import {
   cursorAfterClear,
   cursorShow,
   runOtherCode,
+  RunOtherCodeResult,
 } from 'a-node-tools';
 import { isEmptyArray, isFalse } from 'a-type-of-js';
 import { command } from './command';
@@ -95,7 +96,25 @@ export async function gitRestore(fileList: string[]) {
       .map(e => `"${e}"`)
       .join(' ')}`;
     const result = await runOtherCode({ code, cwd });
-
     dog('将文件移除暂存区', code, result);
   }
+}
+
+/**
+ * ## 检测是否为主动退出
+ * @param result 校验执行是否遇到
+ */
+export async function checkIsSIGINT(result: RunOtherCodeResult) {
+  if (result.isSIGINT) {
+    await markVoluntaryWithdrawal();
+  }
+}
+
+/**
+ * 标记主动退出
+ * @param msg
+ */
+export async function markVoluntaryWithdrawal(msg?: string): Promise<never> {
+  dataStore.voluntaryWithdrawal = true;
+  return await gitError(msg || '请稍等，正在为您退出');
 }

@@ -5,8 +5,7 @@ import {
   isUndefined,
   isBusinessEmptyString,
 } from 'a-type-of-js';
-import { markVoluntaryWithdrawal } from '../data-store/index';
-import { gitError } from '../utils';
+import { checkIsSIGINT, gitError, markVoluntaryWithdrawal } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 
@@ -17,11 +16,13 @@ export async function gitUser() {
   let code = 'git config user.name';
   /**  本地仓库的用户名  */
   const localUserName = await runOtherCode({ code, cwd });
+  await checkIsSIGINT(localUserName);
   dog('本地仓库的用户名', code, localUserName);
 
   code = 'git config --global user.name';
   /**  全局的用户名  */
   const globalUserName = await runOtherCode({ code, cwd });
+  await checkIsSIGINT(globalUserName);
   dog('全局配置的用户名', code, globalUserName);
 
   if (
@@ -47,8 +48,7 @@ export async function setUserName() {
   });
 
   if (isUndefined(username)) {
-    markVoluntaryWithdrawal();
-    return await gitError('您选择了退出，请稍等，正在清理');
+    return await markVoluntaryWithdrawal();
   }
 
   if (isEmptyString(username)) {
@@ -56,6 +56,7 @@ export async function setUserName() {
   } else {
     const code = `git config --global user.name "${username}"`;
     const result = await runOtherCode({ code, cwd });
+    await checkIsSIGINT(result);
     dog('配置全局的用户名', username, code, result);
   }
 }

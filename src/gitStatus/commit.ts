@@ -1,7 +1,7 @@
 import { runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
-import { dataStore, markVoluntaryWithdrawal } from '../data-store';
-import { gitError } from '../utils';
+import { dataStore } from '../data-store';
+import { checkIsSIGINT, gitError, markVoluntaryWithdrawal } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 
@@ -24,8 +24,7 @@ export async function stagingArea() {
   if (isFalse(canCommit.success)) {
     return await gitError('暂存区异常');
   } else if (/^\n?\r?$/.test(canCommit.data)) {
-    markVoluntaryWithdrawal(); // 主动退出，非错误执行
-    return await gitError('暂存区没有未提交的文件'); // 暂存区没有未提交的文件直接🖕使用
+    await markVoluntaryWithdrawal('暂存区没有未提交的文件'); // 主动退出，非错误执行
   }
 
   return await commit(); // 标记代码为一个提交
@@ -42,7 +41,7 @@ export async function commit() {
   const code = `git commit -m "${getMessage(true)}"`;
 
   const result = await runOtherCode({ code, cwd });
-
+  await checkIsSIGINT(result);
   dog('提交代码', code, result);
 
   if (isFalse(result.success)) {

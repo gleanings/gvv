@@ -2,9 +2,9 @@ import { question } from 'a-command';
 import { _p, runOtherCode } from 'a-node-tools';
 import { isFalse, isUndefined } from 'a-type-of-js';
 import { bluePen, cyanPen, greenPen, magentaPen } from 'color-pen';
-import { dataStore, markVoluntaryWithdrawal } from '../data-store/index';
+import { dataStore } from '../data-store/index';
 import { dog } from '../dog';
-import { gitError } from '../utils';
+import { checkIsSIGINT, gitError } from '../utils';
 import { waiting } from '../waiting';
 /**  合并之前  */
 export async function beforeMerge() {
@@ -17,10 +17,7 @@ export async function beforeMerge() {
   waiting.run('正在执行' + cyanPen(code));
   const result = await runOtherCode({ code, waiting });
   dog('冲突判断', result);
-  if (result.isSIGINT) {
-    markVoluntaryWithdrawal();
-    return await gitError('好的，正在为您做退出前的准备');
-  }
+  await checkIsSIGINT(result);
   if (isFalse(result.success)) {
     const tip = ['继续合并', '直接退出'];
     _p(

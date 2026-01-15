@@ -2,7 +2,7 @@ import { runOtherCode } from 'a-node-tools';
 import { isFalse, isTrue } from 'a-type-of-js';
 import { dataStore } from '../data-store';
 import { getMessage } from '../gitStatus/getMessage';
-import { gitError, gitReset } from '../utils';
+import { checkIsSIGINT, gitError, gitReset } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 
@@ -29,7 +29,7 @@ export async function tag() {
   }
 
   const result = await runOtherCode({ code, cwd });
-
+  await checkIsSIGINT(result);
   dog('执行打标签的代码为 <', code, result);
   if (isFalse(result.success)) {
     dog.error('为本次提交打标签出错', result);

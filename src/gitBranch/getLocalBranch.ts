@@ -8,7 +8,7 @@
  * @copyright 2026 ©️ MrMudBean
  * @since 2026-01-14 23:43
  * @version 0.1.8
- * @lastModified 2026-01-15 21:30
+ * @lastModified 2026-01-15 23:39
  *
  * 原使用 `git branch` 获取当前所有的分支，并通过换行符分割提取。
  *
@@ -24,7 +24,7 @@ import { runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
 import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
-import { gitError } from '../utils';
+import { checkIsSIGINT, gitError } from '../utils';
 import { dog } from './../dog';
 
 /**  解析分支信息 */
@@ -33,6 +33,7 @@ export async function getLocalBranch() {
   const code = 'git branch --show-current';
   /**  获取本地的分支信息  */
   const result = await runOtherCode({ code, cwd });
+  await checkIsSIGINT(result);
   dog('获取分支信息', code, result);
   if (isFalse(result.success)) {
     dog.error('获取当前 git 分支出错', result);

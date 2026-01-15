@@ -1,10 +1,10 @@
 import { _p, runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
 import { magentaPen } from 'color-pen';
-import { dataStore, markVoluntaryWithdrawal } from '../data-store';
+import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
 import { dog } from '../dog';
-import { gitError } from '../utils';
+import { checkIsSIGINT, gitError } from '../utils';
 import { waiting } from '../waiting';
 
 /**
@@ -22,10 +22,7 @@ export async function execMerge() {
     waiting,
     cwd,
   });
-  if (result.isSIGINT) {
-    markVoluntaryWithdrawal();
-    return await gitError();
-  }
+  await checkIsSIGINT(result);
   dog('合并分支', code, result);
   if (isFalse(result.success)) {
     dog.error('合并分支出现问题', result);
