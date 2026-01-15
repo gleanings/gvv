@@ -36,8 +36,8 @@ importers:
         specifier: ^12.3.0
         version: 12.3.0(rollup@4.55.1)(tslib@2.8.1)(typescript@5.9.3)
       '@types/node':
-        specifier: ^25.0.8
-        version: 25.0.8
+        specifier: ^25.0.9
+        version: 25.0.9
       a-command:
         specifier: ^3.0.0
         version: 3.0.0
@@ -483,11 +483,8 @@ packages:
     resolution: {integrity: sha512-zmPitbQ8+6zNutpwgcQuLcsEpn/Cj54Kbn7L5pX0Os5kdWplB7xPgEh/g+SWOB/qmows2gpuCaPyduq8ZZRnxA==}
     deprecated: This is a stub types definition. minimatch provides its own type definitions, so you do not need this installed.
 
-  '@types/node@24.3.0':
-    resolution: {integrity: sha512-aPTXCrfwnDLj4VvXrm+UUCQjNEvJgNA8s5F1cvwQU+3KNltTOkBm1j30uNLyqqPNe7gE3KFzImYoZEfLhp4Yow==}
-
-  '@types/node@25.0.8':
-    resolution: {integrity: sha512-powIePYMmC3ibL0UJ2i2s0WIbq6cg6UyVFQxSCpaPxxzAaziRfimGivjdF943sSGV6RADVbk0Nvlm5P/FB44Zg==}
+  '@types/node@25.0.9':
+    resolution: {integrity: sha512-/rpCXHlCWeqClNBwUhDcusJxXYDjZTyE8v5oTO7WbL8eij2nKhUeU89/6xgjU7N4/Vh3He0BtyhJdQbDyhiXAw==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -1975,9 +1972,6 @@ packages:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
     engines: {node: '>= 0.4'}
 
-  undici-types@7.10.0:
-    resolution: {integrity: sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag==}
-
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
@@ -2342,12 +2336,12 @@ snapshots:
 
   '@types/fs-extra@8.1.5':
     dependencies:
-      '@types/node': 24.3.0
+      '@types/node': 25.0.9
 
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 6.0.0
-      '@types/node': 24.3.0
+      '@types/node': 25.0.9
 
   '@types/json-schema@7.0.15': {}
 
@@ -2357,11 +2351,7 @@ snapshots:
     dependencies:
       minimatch: 10.0.3
 
-  '@types/node@24.3.0':
-    dependencies:
-      undici-types: 7.10.0
-
-  '@types/node@25.0.8':
+  '@types/node@25.0.9':
     dependencies:
       undici-types: 7.16.0
 
@@ -4041,8 +4031,6 @@ snapshots:
       has-bigints: 1.1.0
       has-symbols: 1.1.0
       which-boxed-primitive: 1.1.1
-
-  undici-types@7.10.0: {}
 
   undici-types@7.16.0: {}
 
