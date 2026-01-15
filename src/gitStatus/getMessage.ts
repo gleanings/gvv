@@ -4,16 +4,14 @@ import { dog, dun } from '../dog';
 import { now } from '../utils';
 
 /**
- *
  * 获取提交的信息
- *
  * @param withTag
  */
 export function getMessage(withTag: boolean = false) {
   const { kind, message, tag } = dataStore;
   /**  当前的时间  */
   const time = now();
-  if (!dun) {
+  if (dun) {
     dog('本次解析使用参数》〉', withTag);
 
     dog('获取版本号为 》〉', tag);

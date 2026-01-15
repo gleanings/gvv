@@ -1,15 +1,14 @@
 import { _p, runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
 import { magentaPen } from 'color-pen';
-
-import { dataStore } from '../data-store';
+import { dataStore, markVoluntaryWithdrawal } from '../data-store';
+import { cwd } from '../data-store/cwd';
+import { dog } from '../dog';
 import { gitError } from '../utils';
 import { waiting } from '../waiting';
-import { cwd } from './../data-store/cwd';
-import { dog } from './../dog';
 
 /**
- * 合并分支
+ * ## 合并分支
  */
 export async function execMerge() {
   const { gitInfo } = dataStore;
@@ -24,7 +23,7 @@ export async function execMerge() {
     cwd,
   });
   if (result.isSIGINT) {
-    dataStore.voluntaryWIthdrawal = true;
+    markVoluntaryWithdrawal();
     return await gitError();
   }
   dog('合并分支', code, result);

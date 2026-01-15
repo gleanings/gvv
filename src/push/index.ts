@@ -8,6 +8,7 @@ import {
   magentaPen,
 } from 'color-pen';
 import { gitInfo } from '../data-store/gitInfo';
+import { markVoluntaryWithdrawal } from '../data-store/index';
 import { removeExitEvent } from '../onExit';
 import { gitError } from '../utils';
 import { waiting } from '../waiting';
@@ -48,6 +49,7 @@ export async function push() {
     [result.error, result.data].some(e => e.startsWith('Everything up-to-date'))
   ) {
     dog.error('显示没有可推送的文件。但是，不可能会走到这一步呀，在没有');
+    markVoluntaryWithdrawal();
     return await gitError('看起来所有更新都已经提交');
   }
   gitInfo.tagged = false;

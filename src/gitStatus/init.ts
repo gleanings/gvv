@@ -3,7 +3,7 @@ import { _p, runOtherCode } from 'a-node-tools';
 import { isString, isFalse, isUndefined } from 'a-type-of-js';
 import { greenPen } from 'color-pen';
 import { command } from '../command';
-import { dataStore } from '../data-store/index';
+import { markVoluntaryWithdrawal } from '../data-store/index';
 import { gitError } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
@@ -54,7 +54,7 @@ export async function initializeGit() {
   });
 
   if (isUndefined(result)) {
-    dataStore.voluntaryWIthdrawal = true;
+    markVoluntaryWithdrawal();
     return await gitError('好的，正在退出');
   }
 
@@ -70,7 +70,7 @@ export async function initializeGit() {
  * 执行 git init
  *
  * - 在项目使用 `init` 调用时执行
- * - 在项目正常执行过程 🀄️ 初始化时执行
+ * - 在项目正常执行过程 中 初始化时执行
  *
  */
 export async function gitInit() {

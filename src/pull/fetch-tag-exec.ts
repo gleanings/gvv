@@ -1,11 +1,11 @@
 import { runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
 import { brightRedPen, redPen } from 'color-pen';
-import { dataStore } from '../data-store';
+import { dataStore, markVoluntaryWithdrawal } from '../data-store';
+import { cwd } from '../data-store/cwd';
+import { dog } from '../dog';
 import { gitError } from '../utils';
 import { waiting } from '../waiting';
-import { cwd } from './../data-store/cwd';
-import { dog } from './../dog';
 
 /**
  *
@@ -32,7 +32,7 @@ export async function execFetchTag() {
   dog('执行拉起线上标签', code, result);
 
   if (result.isSIGINT) {
-    dataStore.voluntaryWIthdrawal = true;
+    markVoluntaryWithdrawal();
     return await gitError('稍等，这就退出');
   }
 

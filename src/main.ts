@@ -8,7 +8,7 @@
  * @copyright 2026 ©️ MrMudBean
  * @since 2026-01-15 11:09
  * @version 1.0.0
- * @lastModified 2026-01-15 11:11
+ * @lastModified 2026-01-15 22:15
  */
 import { isFalse } from 'a-type-of-js';
 import { command } from './command';
@@ -21,7 +21,7 @@ import { gitInit } from './gitStatus/init';
 import { onExit } from './onExit';
 import { parseArgs } from './parseArgs';
 import { fetch } from './pull';
-import { execFetchTag } from './pull/execFetchTag';
+import { execFetchTag } from './pull/fetch-tag-exec';
 import { push } from './push';
 import { tag } from './tag';
 import { checkTags } from './tag/checkTags';

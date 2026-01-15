@@ -2,7 +2,7 @@ import { question } from 'a-command';
 import { _p } from 'a-node-tools';
 import { isEmptyString, isUndefined } from 'a-type-of-js';
 import { brightYellowPen } from 'color-pen';
-import { dataStore } from '../data-store';
+import { dataStore, markVoluntaryWithdrawal } from '../data-store';
 import { gitError } from '../utils';
 
 /**
@@ -35,6 +35,7 @@ export async function waitInputRemoteAlias() {
   });
 
   if (isUndefined(result)) {
+    markVoluntaryWithdrawal();
     return await gitError('您选择了退出，正在退出');
   }
 

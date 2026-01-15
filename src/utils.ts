@@ -11,7 +11,7 @@ import { dataStore } from './data-store';
 import { cwd } from './data-store/cwd';
 import { gitInfo } from './data-store/gitInfo';
 import { dog } from './dog';
-import { execStashPop } from './pull/execStashPop';
+import { execStashPop } from './pull/stash-pop-exec';
 import { deleteTag } from './tag/deleteTag';
 import { waiting } from './waiting';
 
@@ -28,7 +28,8 @@ export function commonExit() {
 }
 
 /**
- * 异常导致退出
+ * ## 异常导致退出
+ * 退出将自动重置工作区文件状态
  * @param error
  */
 export async function gitError(...error: string[]): Promise<never> {
@@ -69,8 +70,8 @@ export async function gitError(...error: string[]): Promise<never> {
   commonExit();
 
   colorLine('终结分割线', true);
-  const { voluntaryWIthdrawal } = dataStore;
-  return voluntaryWIthdrawal ? command.end() : command.error();
+  const { voluntaryWithdrawal } = dataStore;
+  return voluntaryWithdrawal ? command.end() : command.error();
 }
 
 /**  当 commit 后出现（打 tag 或是 push 错误）错误后取消提交 */
@@ -89,7 +90,10 @@ export async function gitReset() {
  */
 export async function gitRestore(fileList: string[]) {
   if (!isEmptyArray(fileList)) {
-    const code = `git restore --staged "${fileList.join('"  "')}"`;
+    const code = `git restore --staged ${fileList
+      .filter(Boolean)
+      .map(e => `"${e}"`)
+      .join(' ')}`;
     const result = await runOtherCode({ code, cwd });
 
     dog('将文件移除暂存区', code, result);

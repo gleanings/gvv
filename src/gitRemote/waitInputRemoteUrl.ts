@@ -1,14 +1,10 @@
 import { question } from 'a-command';
 import { _p } from 'a-node-tools';
 import { isEmptyString, isUndefined } from 'a-type-of-js';
-import { dataStore } from '../data-store';
+import { dataStore, markVoluntaryWithdrawal } from '../data-store';
 import { gitError } from '../utils';
 
-/**
- *
- * 配置远程库的地址
- *
- */
+/** ## 配置远程库的地址 */
 export async function waitInputRemoteUrl() {
   _p('当前未配置 🛠️ 远程库');
 
@@ -20,7 +16,7 @@ export async function waitInputRemoteUrl() {
   });
 
   if (isUndefined(result)) {
-    dataStore.voluntaryWIthdrawal = true;
+    markVoluntaryWithdrawal();
     return await gitError('您选择了退出，即将退出');
   }
 

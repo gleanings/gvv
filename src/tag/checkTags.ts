@@ -1,7 +1,7 @@
 import { _p, runOtherCode } from 'a-node-tools';
 import { isFalse, isTrue } from 'a-type-of-js';
 import { cyanPen, hexPen, randomPen } from 'color-pen';
-import { dataStore } from '../data-store';
+import { dataStore, markVoluntaryWithdrawal } from '../data-store';
 import { gitError } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
@@ -22,9 +22,7 @@ export async function checkTags() {
   const code = 'git tag --list';
   // 获取本地的 tag 值列表
   const result = await runOtherCode({ code, cwd });
-
   dog('获取本地的标签', code, result);
-
   // 获取本地 tag 列表出错
   if (isFalse(result.success)) {
     return await gitError(
@@ -51,7 +49,7 @@ export async function checkTags() {
     _p(cyanPen`已经存在的 tag 值为：`);
 
     tagList.forEach(e => _p(`${randomPen`-`}  ${e}`));
-
+    markVoluntaryWithdrawal();
     return await gitError(`tag 值 "${tag}" 已经存在于本地`);
   }
 }

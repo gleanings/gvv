@@ -45,8 +45,8 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1
       a-node-tools:
-        specifier: ^4.2.20
-        version: 4.4.1
+        specifier: ^4.4.2
+        version: 4.4.2
       a-type-of-js:
         specifier: ^2.0.0
         version: 2.0.0
@@ -93,8 +93,8 @@ importers:
         specifier: ^1.0.5
         version: 1.0.5
       prettier:
-        specifier: ^3.7.4
-        version: 3.7.4
+        specifier: ^3.8.0
+        version: 3.8.0
       rollup:
         specifier: ^4.55.1
         version: 4.55.1
@@ -655,8 +655,8 @@ packages:
     resolution: {integrity: sha512-jGQIIaXTeHXRUxKonKXFdFHSI4udcWH37ulrtact4SF5U7gN4gJcEdjdlHEam0b3A0V2RlCxdLZPV99DMVIEuA==}
     engines: {node: '>=18.0.0'}
 
-  a-node-tools@4.4.1:
-    resolution: {integrity: sha512-+hqOLClhZ80gnCnVVd/JLQ+JtpcWePXJa/tGqC26suVdeUM1YUm6XLZSoRXudoVX3B6Y/Of3+pzUvrC6thhRPQ==}
+  a-node-tools@4.4.2:
+    resolution: {integrity: sha512-pt+3yl3vhZzkVWHL9fUVooZcpDCFCgOT3TygCWngfVzuVA60tTf/baVNUGL+6+dAO+5O3/+l5XP5s5s5R8Lx4Q==}
     engines: {node: '>=18.0.0'}
 
   a-type-of-js@2.0.0:
@@ -1655,8 +1655,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.7.4:
-    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
+  prettier@3.8.0:
+    resolution: {integrity: sha512-yEPsovQfpxYfgWNhCfECjG5AQaO+K3dp6XERmOepyPDVqcJm+bjyCVO3pmU+nAPe0N5dDvekfGezt/EIiRe1TA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2184,7 +2184,7 @@ snapshots:
   '@qqi/copy-text@1.1.0':
     dependencies:
       a-js-tools: 2.0.1
-      a-node-tools: 4.4.1
+      a-node-tools: 4.4.2
 
   '@qqi/log@1.0.0':
     dependencies:
@@ -2197,7 +2197,7 @@ snapshots:
     dependencies:
       '@qqi/copy-text': 1.1.0
       '@qqi/log': 1.0.0
-      a-node-tools: 4.4.1
+      a-node-tools: 4.4.2
       a-type-of-js: 2.0.0
       color-pen: 3.0.0
 
@@ -2522,7 +2522,7 @@ snapshots:
       '@color-pen/static': 1.1.1
       '@qqi/log': 1.0.0
       a-js-tools: 2.0.1
-      a-node-tools: 4.4.1
+      a-node-tools: 4.4.2
       a-type-of-js: 2.0.0
       color-pen: 3.0.0
 
@@ -2530,7 +2530,7 @@ snapshots:
     dependencies:
       a-type-of-js: 2.0.0
 
-  a-node-tools@4.4.1:
+  a-node-tools@4.4.2:
     dependencies:
       '@color-pen/static': 1.1.1
       '@qqi/log': 1.0.0
@@ -3631,7 +3631,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.7.4: {}
+  prettier@3.8.0: {}
 
   punycode@2.3.1: {}
 

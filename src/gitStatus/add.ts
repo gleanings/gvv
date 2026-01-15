@@ -4,12 +4,10 @@ import { randomPen } from 'color-pen';
 import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
 import { dog, dun } from './../dog';
-import { trackedButNotStaged } from './trackAndStagArea';
+import { trackedButNotStaged } from './track-stag-area';
 
 /**
- *
  * 判断当前工作区是否有未添加到暂存区的已修改（仅关注已追踪）文件
- *
  */
 export async function add() {
   const { gitInfo } = dataStore;
@@ -20,9 +18,9 @@ export async function add() {
   if (isEmptyString(canAdd.data)) {
     _p('工作区没有修改的已追踪的文件待添加到暂存区');
   } else {
-    gitInfo.trackedChangedFiles = canAdd.data.split('\n');
+    gitInfo.trackedChangedFiles = canAdd.data.split('\n').filter(Boolean);
     // 涉及到不必要的运算，所有这里使用 dun 拦截
-    if (!dun) {
+    if (dun) {
       dog(
         '将工作区已追踪的修改文件添加到暂存区',
         gitInfo.trackedChangedFiles.map(e => `- ${randomPen(e)}`).join('\n'),

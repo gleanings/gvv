@@ -1,27 +1,25 @@
-/****************************************************************************
- *  @Author earthnut
- *  @Email earthnut.dev@outlook.com
- *  @ProjectName gvv
- *  @FileName index.ts
- *  @CreateDate  周六  05/31/2025
- *  @Description 拉取线上 git 数据
- *
- *
- * 流程：
- *
- * - 先将文件放置于
- ****************************************************************************/
+/**
+ * @packageDocumentation
+ * @module @gvv/index
+ * @file index.ts
+ * @description 拉取线上 git 数据
+ * @author MrMudBean <Mr.MudBean@outlook.com>
+ * @license MIT
+ * @copyright 2026 ©️ MrMudBean
+ * @since 2025-05-31 19:57
+ * @version 1.0.0
+ * @lastModified 2026-01-15 19:58
+ */
+
 import { gitInfo } from './../data-store/gitInfo';
 import { dog } from './../dog';
-import { beforeMerge } from './before-merge';
-import { execFetchBranch } from './execFetchBranch';
-import { execMerge } from './execMerge';
-import { isForce } from './isForce';
+import { execFetchBranch } from './fetch-branch-exec';
+import { isForce } from './force-is';
+import { beforeMerge } from './merge-before';
+import { execMerge } from './merge-exec';
 
 /**
- *
  * 拉取线上文件
- *
  */
 export async function fetch() {
   if (await isForce()) {
@@ -30,7 +28,7 @@ export async function fetch() {
   }
   await execFetchBranch(); // 拉取线上的分支详情
   // await execStash(); // 先暂存代码
-  await beforeMerge();
+  await beforeMerge(); // 合并代码之前
   await execMerge(); // 执行代码合并
   if (gitInfo.stashed) {
     dog('当前储存区有文件，正在执行取出');

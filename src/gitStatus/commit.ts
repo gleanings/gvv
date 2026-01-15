@@ -1,12 +1,12 @@
 import { runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
-import { dataStore } from '../data-store';
+import { dataStore, markVoluntaryWithdrawal } from '../data-store';
 import { gitError } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 
 import { getMessage } from './getMessage';
-import { trackedNotSubmitted } from './trackAndStagArea';
+import { trackedNotSubmitted } from './track-stag-area';
 
 /**
  *
@@ -24,6 +24,7 @@ export async function stagingArea() {
   if (isFalse(canCommit.success)) {
     return await gitError('暂存区异常');
   } else if (/^\n?\r?$/.test(canCommit.data)) {
+    markVoluntaryWithdrawal(); // 主动退出，非错误执行
     return await gitError('暂存区没有未提交的文件'); // 暂存区没有未提交的文件直接🖕使用
   }
 

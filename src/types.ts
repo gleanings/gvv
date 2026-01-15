@@ -195,5 +195,5 @@ export type DateStore = {
   };
 
   /**  是否为主动退出  */
-  voluntaryWIthdrawal: boolean;
+  voluntaryWithdrawal: boolean;
 };

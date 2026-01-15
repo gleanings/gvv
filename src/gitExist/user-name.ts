@@ -5,7 +5,7 @@ import {
   isUndefined,
   isBusinessEmptyString,
 } from 'a-type-of-js';
-import { dataStore } from '../data-store/index';
+import { markVoluntaryWithdrawal } from '../data-store/index';
 import { gitError } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
@@ -47,7 +47,7 @@ export async function setUserName() {
   });
 
   if (isUndefined(username)) {
-    dataStore.voluntaryWIthdrawal = true;
+    markVoluntaryWithdrawal();
     return await gitError('您选择了退出，请稍等，正在清理');
   }
 

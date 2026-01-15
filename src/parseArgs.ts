@@ -88,7 +88,7 @@ export function parseArgs(): void {
     commandParameters.branch = branch.value[0].toString();
   }
 
-  if (!dun) {
+  if (dun) {
     getVersion(true);
     dog('参数解析完毕', dataStore);
     dog('tag 使用消息', getMessage());

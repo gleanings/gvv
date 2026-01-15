@@ -1,9 +1,10 @@
 import { _p, runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
+import { cwd } from '../data-store/cwd';
+import { gitInfo } from '../data-store/gitInfo';
+import { markVoluntaryWithdrawal } from '../data-store/index';
+import { dog } from '../dog';
 import { gitError } from '../utils';
-import { cwd } from './../data-store/cwd';
-import { gitInfo } from './../data-store/gitInfo';
-import { dog } from './../dog';
 
 /**
  *  执行弹出储存的
@@ -20,10 +21,11 @@ export async function execStashPop() {
   if (isFalse(result.success)) {
     if (
       [result.data, result.error].some(e =>
-        /The stash entry is kept in case you need it again/i.test(e),
+        /The stash entry is kept in case you need it again/gi.test(e),
       )
     ) {
       gitInfo.stashed = false; // 释放状态
+      markVoluntaryWithdrawal();
       return await gitError('当前存在冲突，请先处理完冲突再继续');
     }
 

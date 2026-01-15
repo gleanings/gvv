@@ -6,22 +6,20 @@ import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 
 /**
- * 获取远程分支
+ * ## 获取远程分支
  *
- * 当前在使用时
+ * 当前在使用的分支的设置的远程通过 `git push --set-upstream origin` 设置的远程分支名。
+ *
+ * 如果未获取，可以在
  */
 export async function getRemoteBranch() {
   const { gitInfo } = dataStore;
 
   const code = 'git rev-parse --abbrev-ref --symbolic-full-name @{u}';
-  /**
-   * 获取远程当前分支名的分支信息
-   */
+  /** 获取远程当前分支名的分支信息  */
   const result = await runOtherCode({ code, cwd });
-
   dog('获取远程当前分支的信息', code, result);
-
-  /**  获取远程分支信息 ❌  */
+  /**  获取远程分支信息 失败  */
   if (isFalse(result.success)) {
     dog.warn('获取本地分支关联的远程分支出错', result);
     /**  未设置远程分支  */
@@ -34,6 +32,7 @@ export async function getRemoteBranch() {
       // 未设置远程关联的分支时直接返回🈳字符串
       return;
     } else {
+      // 获取远程分支时出错
       return await gitError(result.error);
     }
   }

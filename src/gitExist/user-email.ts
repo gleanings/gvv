@@ -1,7 +1,7 @@
 import { question } from 'a-command';
 import { runOtherCode } from 'a-node-tools';
 import { isEmptyString, isUndefined } from 'a-type-of-js';
-import { dataStore } from '../data-store/index';
+import { markVoluntaryWithdrawal } from '../data-store/index';
 import { gitError } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
@@ -38,7 +38,7 @@ export async function setUserEmail() {
   });
 
   if (isUndefined(email)) {
-    dataStore.voluntaryWIthdrawal = true;
+    markVoluntaryWithdrawal();
     return await gitError('您选择了退出，请稍等，正在清理');
   }
 

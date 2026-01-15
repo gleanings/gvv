@@ -1,19 +1,15 @@
 import { selection } from 'a-command';
 import { isFalse, isUndefined, isZero } from 'a-type-of-js';
 import { blinkPen, brightRedPen, greenPen } from 'color-pen';
-import { dataStore } from '../data-store/index';
+import { commandParameters } from '../data-store/commandParameters';
+import { markVoluntaryWithdrawal } from '../data-store/index';
 import { gitError } from '../utils';
-import { commandParameters } from './../data-store/commandParameters';
 /**
- *
- * 是否是否强制推送而跳过当前的拉取
- *
+ * ## 是否是否强制推送而跳过当前的拉取
  */
 export async function isForce(): Promise<boolean> {
   const { force } = commandParameters;
-  if (isFalse(force)) {
-    return false;
-  }
+  if (isFalse(force)) return false; // 未设定强制推送
 
   const result = await selection<number>({
     info: '您启用了强制推送，为了安全劳烦再次确认',
@@ -37,7 +33,7 @@ export async function isForce(): Promise<boolean> {
   });
 
   if (isUndefined(result) || result === 2) {
-    dataStore.voluntaryWIthdrawal = true;
+    markVoluntaryWithdrawal();
     return await gitError('好的，您选择了退出，正在做退出前最后的处理');
   }
 

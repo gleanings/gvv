@@ -4,6 +4,7 @@ import { gitError, commonExit } from './utils';
 function exit() {
   commonExit();
 }
+
 /**  退出前处理  */
 async function beforeExit() {
   await gitError();

@@ -33,9 +33,7 @@ export async function hasRemote() {
   if (isEmptyString(gitInfo.alias)) {
     await waitInputRemoteAlias(); // 设置远程分支的别名
     await waitInputRemoteUrl(); // 设置远程分支的 url
-
     await verifyRemoteUrl(); // 验证远程分支的 url 是否正确
-
     await setRemote(); // 设置远程分支
   }
 }

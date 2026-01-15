@@ -20,8 +20,8 @@ export async function getRemote() {
   /**  获取远程仓库信息  */
   const result = await runOtherCode({ code, cwd });
   dog('获取远端的库信息', code, result);
-  // 获取远程仓库信息 ❌
-  if (!result.success || !result.data) {
+  // 获取远程仓库信息 失败
+  if (!result.success) {
     dog.error('未获取远程仓库', result);
     await gitError(result.error);
   }
