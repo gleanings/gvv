@@ -65,8 +65,9 @@ async function inputOtherBranchName() {
     return await duplicateNamesNotAllowed();
   }
 
-  const setUpstream = await runOtherCode(`git push -u ${alias} ${result}`);
-  await checkIsSIGINT(setUpstream);
+  await checkIsSIGINT(
+    await runOtherCode(`git push --set-upstream ${alias} ${result}`),
+  );
 
   dataStore.gitInfo.branch = result; // 设置新的分支
 }
@@ -83,8 +84,8 @@ async function duplicateNamesNotAllowed(): Promise<any> {
   });
   if (isUndefined(response) || response === tip[1])
     return await markVoluntaryWithdrawal();
-  _p(`当前远程分支情况为（尽量不使用已存在的远端分支名）：`);
   await checkIsSIGINT(await runOtherCode('git remote -v'));
+  _p(`当前远程分支情况为（尽量不使用已存在的远端分支名）：`);
   if (response === tip[0]) return inputOtherBranchName();
 }
 
