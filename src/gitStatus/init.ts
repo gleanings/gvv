@@ -1,11 +1,12 @@
-import { cwd } from './../data-store/cwd';
-import { dog } from './../dog';
+import { question } from 'a-command';
 import { _p, runOtherCode } from 'a-node-tools';
 import { isString, isFalse, isUndefined } from 'a-type-of-js';
 import { greenPen } from 'color-pen';
 import { command } from '../command';
+import { dataStore } from '../data-store/index';
 import { gitError } from '../utils';
-import { dataStore } from 'src/data-store';
+import { cwd } from './../data-store/cwd';
+import { dog } from './../dog';
 
 /**
  *
@@ -46,7 +47,7 @@ export async function initializeGit() {
   _p('git 未初始化 ！！！');
   _p(`当前工作目录为：${greenPen(pwd)}`);
   const tip = ['配置', '退出 ⏏️'];
-  const result = await command.question({
+  const result = await question({
     text: '是否 🔧 初始化 git 仓库',
     resultText: '配置 git 仓库',
     tip,

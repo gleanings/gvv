@@ -1,10 +1,10 @@
+import { runOtherCode } from 'a-node-tools';
+import { isFalse, isTrue } from 'a-type-of-js';
+import { dataStore } from '../data-store';
+import { getMessage } from '../gitStatus/getMessage';
+import { gitError, gitReset } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
-import { runOtherCode } from 'a-node-tools';
-import { dataStore } from '../data-store';
-import { gitError, gitReset } from '../utils';
-import { getMessage } from '../gitStatus/getMessage';
-import { isFalse, isTrue } from 'a-type-of-js';
 
 /**
  *

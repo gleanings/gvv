@@ -1,9 +1,9 @@
-import { dog } from './../dog';
-import { command } from '../command';
-import { gitError } from '../utils';
-import { setAlias } from './setAlias';
+import { selection } from 'a-command';
 import { isEmptyString, isUndefined } from 'a-type-of-js';
-import { dataStore } from 'src/data-store';
+import { dataStore } from '../data-store/index';
+import { gitError } from '../utils';
+import { dog } from './../dog';
+import { setAlias } from './setAlias';
 
 /**
  *
@@ -15,7 +15,7 @@ export async function chooseAlias(remoteAliases: { [x: string]: string }) {
 
   const remoteList = Object.keys(remoteAliases);
 
-  const result = await command.selection({
+  const result = await selection({
     info: '当前存在多个远程库配置',
     resultText: '本次推送选择的远程分支为',
     data: remoteList.map(e => ({

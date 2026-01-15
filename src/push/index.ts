@@ -1,4 +1,5 @@
-import { cwd } from './../data-store/cwd';
+import { _p, runOtherCode } from 'a-node-tools';
+import { isFalse } from 'a-type-of-js';
 import {
   brightCyanPen,
   brightGreenPen,
@@ -6,14 +7,13 @@ import {
   greenPen,
   magentaPen,
 } from 'color-pen';
-import { isFalse } from 'a-type-of-js';
-import { dog } from './../dog';
-import { _p, runOtherCode } from 'a-node-tools';
-import { gitError } from '../utils';
-import { pushFail } from './pushFail';
 import { gitInfo } from '../data-store/gitInfo';
-import { waiting } from 'src/waiting';
-import { removeExitEvent } from 'src/onExit';
+import { removeExitEvent } from '../onExit';
+import { gitError } from '../utils';
+import { waiting } from '../waiting';
+import { cwd } from './../data-store/cwd';
+import { dog } from './../dog';
+import { pushFail } from './pushFail';
 /**
  *
  * 推送代码到远程库

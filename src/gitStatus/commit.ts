@@ -1,12 +1,12 @@
-import { cwd } from './../data-store/cwd';
-import { dataStore } from '../data-store';
-import { dog } from './../dog';
 import { runOtherCode } from 'a-node-tools';
-
-import { gitError } from '../utils';
-import { trackedNotSubmitted } from './trackAndStagArea';
-import { getMessage } from './getMessage';
 import { isFalse } from 'a-type-of-js';
+import { dataStore } from '../data-store';
+import { gitError } from '../utils';
+import { cwd } from './../data-store/cwd';
+import { dog } from './../dog';
+
+import { getMessage } from './getMessage';
+import { trackedNotSubmitted } from './trackAndStagArea';
 
 /**
  *

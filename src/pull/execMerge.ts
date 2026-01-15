@@ -1,11 +1,12 @@
-import { cwd } from './../data-store/cwd';
-import { dataStore } from '../data-store';
-import { dog } from './../dog';
 import { _p, runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
-import { gitError } from '../utils';
 import { magentaPen } from 'color-pen';
-import { waiting } from 'src/waiting';
+
+import { dataStore } from '../data-store';
+import { gitError } from '../utils';
+import { waiting } from '../waiting';
+import { cwd } from './../data-store/cwd';
+import { dog } from './../dog';
 
 /**
  * 合并分支

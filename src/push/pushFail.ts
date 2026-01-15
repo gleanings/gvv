@@ -1,8 +1,9 @@
-import { gitError } from '../utils';
 import { _p } from 'a-node-tools';
 import { brightRedPen, cyanPen, yellowPen } from 'color-pen';
+import { gitError } from '../utils';
 /**
  * 推送出现错误
+ * @param error
  */
 export async function pushFail(error: string) {
   if (

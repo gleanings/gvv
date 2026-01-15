@@ -1,6 +1,4 @@
-import { cwd } from './data-store/cwd';
-import { gitInfo } from './data-store/gitInfo';
-import { command } from './command';
+import { sleep } from 'a-js-tools';
 import {
   colorLine,
   cursorAfterClear,
@@ -8,12 +6,14 @@ import {
   runOtherCode,
 } from 'a-node-tools';
 import { isEmptyArray, isFalse } from 'a-type-of-js';
-import { deleteTag } from './tag/deleteTag';
-import { execStashPop } from './pull/execStashPop';
-import { sleep } from 'a-js-tools';
-import { waiting } from './waiting';
-import { dog } from './dog';
+import { command } from './command';
 import { dataStore } from './data-store';
+import { cwd } from './data-store/cwd';
+import { gitInfo } from './data-store/gitInfo';
+import { dog } from './dog';
+import { execStashPop } from './pull/execStashPop';
+import { deleteTag } from './tag/deleteTag';
+import { waiting } from './waiting';
 
 /** 当前的时间 */
 export function now(): string {
@@ -27,7 +27,10 @@ export function commonExit() {
   cursorShow(); // 恢复光标位置
 }
 
-/** 异常导致退出 */
+/**
+ * 异常导致退出
+ * @param error
+ */
 export async function gitError(...error: string[]): Promise<never> {
   const info = error.join('\n');
   /**  配置输出文本样式  */
@@ -80,7 +83,10 @@ export async function gitReset() {
   await gitRestore(gitInfo.trackedChangedFiles);
 }
 
-/** 将文件移除暂存区 */
+/**
+ * 将文件移除暂存区
+ * @param fileList
+ */
 export async function gitRestore(fileList: string[]) {
   if (!isEmptyArray(fileList)) {
     const code = `git restore --staged "${fileList.join('"  "')}"`;

@@ -1,13 +1,13 @@
-import { dun } from './../dog';
 import { isEmptyArray } from 'a-type-of-js';
 import { dataStore } from '../data-store';
+import { dog, dun } from '../dog';
 import { now } from '../utils';
-import { dog } from 'src/dog';
 
 /**
  *
  * 获取提交的信息
  *
+ * @param withTag
  */
 export function getMessage(withTag: boolean = false) {
   const { kind, message, tag } = dataStore;

@@ -18,9 +18,7 @@ export default {
     },
   ],
   // 配置需要排除的包
-  external: external({
-    ignore: ['src/data-store', 'src/waiting'],
-  }),
+  external: external({}),
   plugins: [
     resolve(),
     commonjs(),

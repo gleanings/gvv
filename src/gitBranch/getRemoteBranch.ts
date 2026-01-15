@@ -1,9 +1,9 @@
-import { cwd } from './../data-store/cwd';
-import { dog } from './../dog';
 import { runOtherCode } from 'a-node-tools';
 import { isString, isFalse, isEmptyString } from 'a-type-of-js';
 import { dataStore } from '../data-store';
 import { gitError } from '../utils';
+import { cwd } from './../data-store/cwd';
+import { dog } from './../dog';
 
 /**
  * 获取远程分支

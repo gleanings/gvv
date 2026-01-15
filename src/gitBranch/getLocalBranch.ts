@@ -1,12 +1,14 @@
-import { isFalse } from 'a-type-of-js';
-/****************************************************************************
- *  @Author earthnut
- *  @Email earthnut.dev@outlook.com
- *  @ProjectName gvv
- *  @FileName getLocalBranch.ts
- *  @CreateDate  周五  05/09/2025
- *  @Description 获取当前的 git 分支
- *
+/**
+ * @packageDocumentation
+ * @module @gvv/getLocalBranch
+ * @file getLocalBranch.ts
+ * @description 获取当前的 git 分支
+ * @author MrMudBean <Mr.MudBean@outlook.com>
+ * @license MIT
+ * @copyright 2026 ©️ MrMudBean
+ * @since 2026-01-14 23:43
+ * @version 0.1.8
+ * @lastModified 2026-01-14 23:43
  *
  * 原使用 `git branch` 获取当前所有的分支，并通过换行符分割提取。
  *
@@ -17,14 +19,13 @@ import { isFalse } from 'a-type-of-js';
  * const branch = branchList.find(e => e.startsWith('*'));
  * ```
  * 现使用 `git branch --show-current` （在分离头指针状态返回为空） 或 `git rev-parse --abbrev-ref HEAD` （在分离头指针状态返回值为 "HEAD" ）
- *
- ****************************************************************************/
-
-import { dog } from './../dog';
+ */
 import { runOtherCode } from 'a-node-tools';
+import { isFalse } from 'a-type-of-js';
 import { dataStore } from '../data-store';
+import { cwd } from '../data-store/cwd';
 import { gitError } from '../utils';
-import { cwd } from 'src/data-store/cwd';
+import { dog } from './../dog';
 
 /**
  *

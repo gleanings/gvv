@@ -1,10 +1,10 @@
-import { dataStore } from '../data-store';
-import { dog, dun } from './../dog';
 import { _p, runOtherCode } from 'a-node-tools';
-import { trackedButNotStaged } from './trackAndStagArea';
-import { randomPen } from 'color-pen';
 import { isEmptyString } from 'a-type-of-js';
-import { cwd } from 'src/data-store/cwd';
+import { randomPen } from 'color-pen';
+import { dataStore } from '../data-store';
+import { cwd } from '../data-store/cwd';
+import { dog, dun } from './../dog';
+import { trackedButNotStaged } from './trackAndStagArea';
 
 /**
  *

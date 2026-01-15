@@ -1,14 +1,14 @@
-import { cwd } from './../data-store/cwd';
-import { isBusinessEmptyString, isZero } from 'a-type-of-js';
-import { dog } from './../dog';
 import { _p, runOtherCode } from 'a-node-tools';
-import { gitError } from '../utils';
-import { parseRemoteAlias } from './parseRemoteAlias';
-import { chooseAlias } from './chooseAlias';
-import { setAlias } from './setAlias';
+import { isBusinessEmptyString, isZero } from 'a-type-of-js';
 import { magentaPen } from 'color-pen';
 import { commandParameters } from '../data-store/commandParameters';
 import { gitInfo } from '../data-store/gitInfo';
+import { gitError } from '../utils';
+import { cwd } from './../data-store/cwd';
+import { dog } from './../dog';
+import { chooseAlias } from './chooseAlias';
+import { parseRemoteAlias } from './parseRemoteAlias';
+import { setAlias } from './setAlias';
 
 /**
  *

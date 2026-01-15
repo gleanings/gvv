@@ -1,3 +1,4 @@
+import { runOtherCode } from 'a-node-tools';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 /****************************************************************************
@@ -14,7 +15,6 @@ import { dog } from './../dog';
  * - trackedButNotStaged() 已追踪且修改未添加到暂存区的文件列表
  * - trackedNotSubmitted() 已追踪且修改添加到暂存区未提交的列表
  ****************************************************************************/
-import { runOtherCode } from 'a-node-tools';
 
 /**
  *

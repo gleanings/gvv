@@ -1,7 +1,7 @@
 import { isFalse } from 'a-type-of-js';
 import { DateStore } from '../types';
-import { gitInfo } from './gitInfo';
 import { commandParameters } from './commandParameters';
+import { gitInfo } from './gitInfo';
 
 /**
  * 数仓

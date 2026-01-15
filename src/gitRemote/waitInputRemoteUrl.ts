@@ -1,8 +1,8 @@
+import { question } from 'a-command';
 import { _p } from 'a-node-tools';
-import { command } from '../command';
+import { isEmptyString, isUndefined } from 'a-type-of-js';
 import { dataStore } from '../data-store';
 import { gitError } from '../utils';
-import { isEmptyString, isUndefined } from 'a-type-of-js';
 
 /**
  *
@@ -12,7 +12,7 @@ import { isEmptyString, isUndefined } from 'a-type-of-js';
 export async function waitInputRemoteUrl() {
   _p('当前未配置 🛠️ 远程库');
 
-  const result = await command.question({
+  const result = await question({
     text: '请 🔧 配置远程分支的链接',
     resultText: '设置远程分支的链接为',
     tip: 'git@',

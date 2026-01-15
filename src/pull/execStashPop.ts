@@ -1,9 +1,9 @@
-import { cwd } from './../data-store/cwd';
-import { gitInfo } from './../data-store/gitInfo';
-import { dog } from './../dog';
 import { _p, runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
 import { gitError } from '../utils';
+import { cwd } from './../data-store/cwd';
+import { gitInfo } from './../data-store/gitInfo';
+import { dog } from './../dog';
 
 /**
  *  执行弹出储存的

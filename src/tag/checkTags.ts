@@ -1,11 +1,11 @@
-import { cwd } from './../data-store/cwd';
-import { dataStore } from '../data-store';
-import { dog } from './../dog';
-import { cyanPen, hexPen, randomPen } from 'color-pen';
-import { gitError } from '../utils';
 import { _p, runOtherCode } from 'a-node-tools';
-import { getVersion } from './getVersion';
 import { isFalse, isTrue } from 'a-type-of-js';
+import { cyanPen, hexPen, randomPen } from 'color-pen';
+import { dataStore } from '../data-store';
+import { gitError } from '../utils';
+import { cwd } from './../data-store/cwd';
+import { dog } from './../dog';
+import { getVersion } from './getVersion';
 
 /**
  *

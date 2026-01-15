@@ -11,12 +11,12 @@
  *
  * - 先将文件放置于
  ****************************************************************************/
-import { dog } from './../dog';
 import { gitInfo } from './../data-store/gitInfo';
+import { dog } from './../dog';
+import { beforeMerge } from './before-merge';
 import { execFetchBranch } from './execFetchBranch';
 import { execMerge } from './execMerge';
 import { isForce } from './isForce';
-import { beforeMerge } from './before-merge';
 
 /**
  *

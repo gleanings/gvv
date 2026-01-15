@@ -1,10 +1,10 @@
-import { Command } from 'a-command';
+import { Args } from 'a-command';
 import { redPen } from 'color-pen';
 
 /**
  * 终端命令
  */
-const command = new Command<{
+const command = new Args<{
   alias: undefined;
   branch: undefined;
   force: undefined;

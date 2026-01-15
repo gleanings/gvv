@@ -1,6 +1,6 @@
 import { fileExist, getDirectoryBy, pathJoin } from 'a-node-tools';
 import { isUndefined } from 'a-type-of-js';
-import { dog } from 'src/dog';
+import { dog } from '../dog';
 import { gitInfo } from './gitInfo';
 
 /**  工作目录  */

@@ -1,9 +1,9 @@
-import { cwd } from './../data-store/cwd';
-import { dog } from './../dog';
 import { runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
-import { gitError } from '../utils';
 import { gitInfo } from '../data-store/gitInfo';
+import { gitError } from '../utils';
+import { cwd } from './../data-store/cwd';
+import { dog } from './../dog';
 
 /**
  * 暂存当前更改

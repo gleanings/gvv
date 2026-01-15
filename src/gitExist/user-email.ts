@@ -1,10 +1,10 @@
+import { question } from 'a-command';
+import { runOtherCode } from 'a-node-tools';
+import { isEmptyString, isUndefined } from 'a-type-of-js';
+import { dataStore } from '../data-store/index';
+import { gitError } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
-import { runOtherCode } from 'a-node-tools';
-import { command } from '../command';
-import { gitError } from '../utils';
-import { isEmptyString, isUndefined } from 'a-type-of-js';
-import { dataStore } from 'src/data-store';
 
 /**
  * git 的账户
@@ -32,7 +32,7 @@ export async function gitUserEmail() {
  *
  */
 export async function setUserEmail() {
-  const email = await command.question({
+  const email = await question({
     text: '请 🔧 配置您的 git 的用户 📮 邮箱',
     required: true,
   });

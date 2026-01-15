@@ -4,6 +4,7 @@ import { dog } from './../dog';
  *
  * 解析远程库别名
  *
+ * @param remote
  */
 export function parseRemoteAlias(remote: string) {
   /**  获取远程仓库信息 ✅ 转化为数组  */

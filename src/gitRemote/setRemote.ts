@@ -1,9 +1,9 @@
-import { cwd } from './../data-store/cwd';
 import { runOtherCode } from 'a-node-tools';
-import { dataStore } from '../data-store';
-import { gitError } from '../utils';
 import { isFalse } from 'a-type-of-js';
+import { dataStore } from '../data-store';
 import { dog } from '../dog';
+import { gitError } from '../utils';
+import { cwd } from './../data-store/cwd';
 
 /**
  *

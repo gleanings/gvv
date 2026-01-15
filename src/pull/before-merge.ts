@@ -1,11 +1,11 @@
+import { question } from 'a-command';
 import { _p, runOtherCode } from 'a-node-tools';
-import { waiting } from 'src/waiting';
-import { dataStore } from './../data-store/index';
-import { dog } from 'src/dog';
-import { gitError } from 'src/utils';
-import { bluePen, cyanPen, greenPen, magentaPen } from 'color-pen';
-import { command } from 'src/command';
 import { isFalse, isUndefined } from 'a-type-of-js';
+import { bluePen, cyanPen, greenPen, magentaPen } from 'color-pen';
+import { dog } from '../dog';
+import { gitError } from '../utils';
+import { waiting } from '../waiting';
+import { dataStore } from './../data-store/index';
 /**  合并之前  */
 export async function beforeMerge() {
   const { branch, alias, localBranch } = dataStore.gitInfo;
@@ -32,7 +32,7 @@ export async function beforeMerge() {
       `当前本地提交与线上的提交有${magentaPen`冲突`}，您可以${greenPen`继续合并`}，然后手动处理冲突，或者，直接${bluePen`退出`}\n\n`,
     );
 
-    const askForConflict = await command.question({
+    const askForConflict = await question({
       text: '继续或退出',
       tip,
     });

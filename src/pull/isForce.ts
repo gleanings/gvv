@@ -1,9 +1,9 @@
+import { selection } from 'a-command';
 import { isFalse, isUndefined, isZero } from 'a-type-of-js';
-import { commandParameters } from './../data-store/commandParameters';
-import { command } from 'src/command';
-import { gitError } from 'src/utils';
 import { blinkPen, brightRedPen, greenPen } from 'color-pen';
-import { dataStore } from 'src/data-store';
+import { dataStore } from '../data-store/index';
+import { gitError } from '../utils';
+import { commandParameters } from './../data-store/commandParameters';
 /**
  *
  * 是否是否强制推送而跳过当前的拉取
@@ -15,7 +15,7 @@ export async function isForce(): Promise<boolean> {
     return false;
   }
 
-  const result = await command.selection<number>({
+  const result = await selection<number>({
     info: '您启用了强制推送，为了安全劳烦再次确认',
     data: [
       {

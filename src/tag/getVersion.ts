@@ -1,4 +1,3 @@
-import { dog } from './../dog';
 import {
   getDirectoryBy,
   PackageJson,
@@ -7,8 +6,9 @@ import {
 } from 'a-node-tools';
 import { isUndefined } from 'a-type-of-js';
 import { dataStore } from '../data-store';
+import { cwd } from '../data-store/cwd';
 import { gitError } from '../utils';
-import { cwd } from 'src/data-store/cwd';
+import { dog } from './../dog';
 
 /**
  *

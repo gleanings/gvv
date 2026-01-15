@@ -1,8 +1,8 @@
 import { _p } from 'a-node-tools';
+import { isTrue } from 'a-type-of-js';
 import { italicPen, pen } from 'color-pen';
 
 import { dataStore } from '../data-store';
-import { isTrue } from 'a-type-of-js';
 import { commandParameters } from '../data-store/commandParameters';
 
 /**

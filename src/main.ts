@@ -1,3 +1,15 @@
+/**
+ * @packageDocumentation
+ * @module gvv
+ * @file main.ts
+ * @description 设定用户的信息
+ * @author MrMudBean <Mr.MudBean@outlook.com>
+ * @license MIT
+ * @copyright 2026 ©️ MrMudBean
+ * @since 2026-01-15 11:09
+ * @version 1.0.0
+ * @lastModified 2026-01-15 11:11
+ */
 import { isFalse } from 'a-type-of-js';
 import { command } from './command';
 import { dataStore } from './data-store';
@@ -6,20 +18,16 @@ import { gitBranch } from './gitBranch';
 import { gitExist } from './gitExist';
 import { gitStatus } from './gitStatus';
 import { gitInit } from './gitStatus/init';
+import { onExit } from './onExit';
 import { parseArgs } from './parseArgs';
+import { fetch } from './pull';
+import { execFetchTag } from './pull/execFetchTag';
 import { push } from './push';
 import { tag } from './tag';
 import { checkTags } from './tag/checkTags';
-import { fetch } from './pull';
-import { onExit } from './onExit';
-import { execFetchTag } from './pull/execFetchTag';
 
 /**
- *
  * 主程序入口
- *
- * @author earthnut.dev
- *
  */
 export async function main(): Promise<void> {
   onExit();

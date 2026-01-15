@@ -1,14 +1,14 @@
-import { cwd } from './../data-store/cwd';
-import { dog } from './../dog';
+import { question } from 'a-command';
 import { runOtherCode } from 'a-node-tools';
-import { command } from '../command';
-import { gitError } from '../utils';
 import {
   isEmptyString,
   isUndefined,
   isBusinessEmptyString,
 } from 'a-type-of-js';
-import { dataStore } from 'src/data-store';
+import { dataStore } from '../data-store/index';
+import { gitError } from '../utils';
+import { cwd } from './../data-store/cwd';
+import { dog } from './../dog';
 
 /**
  * git 的账户
@@ -40,7 +40,7 @@ export async function gitUser() {
  *
  */
 export async function setUserName() {
-  const username = await command.question({
+  const username = await question({
     text: '请 🔧 配置您的 git 的用户名',
     tip: 'user.name',
     resultText: '您配置的 git 用户名是',

@@ -1,11 +1,11 @@
+import { runOtherCode } from 'a-node-tools';
+import { isFalse } from 'a-type-of-js';
+import { brightRedPen, redPen } from 'color-pen';
+import { dataStore } from '../data-store';
+import { gitError } from '../utils';
+import { waiting } from '../waiting';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
-import { isFalse } from 'a-type-of-js';
-import { dataStore } from '../data-store';
-import { runOtherCode } from 'a-node-tools';
-import { gitError } from '../utils';
-import { brightRedPen, redPen } from 'color-pen';
-import { waiting } from 'src/waiting';
 
 /**
  *

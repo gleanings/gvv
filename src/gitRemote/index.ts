@@ -11,13 +11,13 @@
  * - 当有两个以上的仓库存在，则显示选择
  *
  ****************************************************************************/
+import { isEmptyString } from 'a-type-of-js';
+import { dataStore } from '../data-store';
+import { getRemote } from './getRemote';
+import { setRemote } from './setRemote';
+import { verifyRemoteUrl } from './verifyRemoteUrl';
 import { waitInputRemoteAlias } from './waitInputRemoteAlias';
 import { waitInputRemoteUrl } from './waitInputRemoteUrl';
-import { setRemote } from './setRemote';
-import { getRemote } from './getRemote';
-import { dataStore } from '../data-store';
-import { verifyRemoteUrl } from './verifyRemoteUrl';
-import { isEmptyString } from 'a-type-of-js';
 
 /**
  *

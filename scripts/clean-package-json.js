@@ -18,6 +18,8 @@ packageJson = {
     email: 'earthnut.dev@outlook.com',
     url: 'https://earthnut.dev',
   },
+  description: '一键 git 提交: git add + git commit + git push',
+  license: 'MIT',
   files: ['bin.mjs'],
   keywords: ['gvv', 'earthnut'],
   homepage: 'https://earthnut.dev/npm/gvv',

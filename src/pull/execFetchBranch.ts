@@ -1,10 +1,10 @@
-import { cwd } from './../data-store/cwd';
-import { dog } from './../dog';
+import { _p, runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
 import { dataStore } from '../data-store';
-import { _p, runOtherCode } from 'a-node-tools';
 import { gitError } from '../utils';
-import { waiting } from 'src/waiting';
+import { waiting } from '../waiting';
+import { cwd } from './../data-store/cwd';
+import { dog } from './../dog';
 
 /**
  *

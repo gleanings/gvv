@@ -1,11 +1,11 @@
-import { cwd } from './../data-store/cwd';
-import { dataStore } from 'src/data-store';
-import { unTrackedFiles } from './trackAndStagArea';
-import { dog } from 'src/dog';
-import { isEmptyString, isFalse, isUndefined } from 'a-type-of-js';
+import { selection, SUCCESS } from 'a-command';
 import { runOtherCode } from 'a-node-tools';
-import { command } from 'src/command';
-import { gitError } from 'src/utils';
+import { isEmptyString, isFalse, isUndefined } from 'a-type-of-js';
+import { dataStore } from '../data-store/index';
+import { dog } from '../dog';
+import { gitError } from '../utils';
+import { cwd } from './../data-store/cwd';
+import { unTrackedFiles } from './trackAndStagArea';
 
 /**
  *
@@ -37,6 +37,7 @@ export async function manageUntrackedFile() {
  *
  * 是否将未追踪的文件添加到追踪区
  *
+ * @param untrackedFileList
  */
 async function addTrack(untrackedFileList: string[]) {
   const data = untrackedFileList.map(e => ({
@@ -45,7 +46,7 @@ async function addTrack(untrackedFileList: string[]) {
     checked: true,
   }));
 
-  const result = await command.selection({
+  const result = await selection({
     data,
     info: '请使用 enter 确认，空格切换文件是否提交。ctrl + a 全选，ctrl + z 取消全选，ctrl + r 切换所有状态',
     kind: 'check',
@@ -60,6 +61,6 @@ async function addTrack(untrackedFileList: string[]) {
   if (!response.success) {
     return await gitError('执行', response.error || response.data);
   }
-  command.SUCCESS(`已将 ${result.length} 个文件添加追踪`);
+  SUCCESS(`已将 ${result.length} 个文件添加追踪`);
   /**  已添加到  */
 }

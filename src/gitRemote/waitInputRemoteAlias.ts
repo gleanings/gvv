@@ -1,9 +1,9 @@
+import { question } from 'a-command';
 import { _p } from 'a-node-tools';
+import { isEmptyString, isUndefined } from 'a-type-of-js';
 import { brightYellowPen } from 'color-pen';
-import { command } from '../command';
 import { dataStore } from '../data-store';
 import { gitError } from '../utils';
-import { isEmptyString, isUndefined } from 'a-type-of-js';
 
 /**
  *
@@ -26,7 +26,7 @@ export async function waitInputRemoteAlias() {
 
   _p('当前未配置 🛠️ 远程库');
 
-  const result = await command.question({
+  const result = await question({
     text: '请 🔧 配置远程分支的别名',
     resultText: '设置远程分支的别名为',
     tip: 'origin',

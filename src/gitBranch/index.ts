@@ -8,11 +8,11 @@
  *
  *
  ****************************************************************************/
+import { isEmptyString } from 'a-type-of-js';
 import { dataStore } from '../data-store';
+import { hasRemote } from '../gitRemote';
 import { getLocalBranch } from './getLocalBranch';
 import { getRemoteBranch } from './getRemoteBranch';
-import { hasRemote } from '../gitRemote';
-import { isEmptyString } from 'a-type-of-js';
 
 /**
  *
