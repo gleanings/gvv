@@ -15,14 +15,12 @@ import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 import { pushFail } from './pushFail';
 /**
- *
- * 推送代码到远程库
- *
+ * 推送代码到上游库
  */
 export async function push() {
-  const { alias, branch, localBranch, force } = gitInfo;
+  const { alias, branch, localBranch, force, inputBranch } = gitInfo;
   /**  推送的实际分支  */
-  const pushBrach = branch || localBranch;
+  const pushBrach = branch || inputBranch || localBranch;
   /**  执行的 shell 命令  */
   const code = `git push ${alias} ${localBranch}:${pushBrach} --tags ${force ? '--force' : ''}`;
 
@@ -48,6 +46,9 @@ export async function push() {
   if (
     [result.error, result.data].some(e => e.startsWith('Everything up-to-date'))
   ) {
+    /**
+     * - 在设置上游分支名的时候，使用 `git push -u xxx xxx` 会导致该情况的发生
+     */
     dog.error('显示没有可推送的文件。但是，不可能会走到这一步呀，在没有');
     await markVoluntaryWithdrawal('看起来所有更新都已经提交');
   }
@@ -56,6 +57,10 @@ export async function push() {
 
   _p(
     `已经本地的修改推送到 ${brightGreenPen(alias)}/${brightCyanPen(pushBrach)}`,
+  );
+  // 设定推送分支
+  await checkIsSIGINT(
+    await runOtherCode(`git push --set-upstream ${alias} ${pushBrach}`),
   );
   removeExitEvent();
 }

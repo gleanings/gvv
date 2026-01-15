@@ -11,7 +11,7 @@ export type GitInfo = {
    */
   alias: string;
   /**
-   * 远程仓库地址
+   * 上游仓库地址
    */
   url: string;
   /**
@@ -19,9 +19,11 @@ export type GitInfo = {
    */
   branch: string;
   /**
-   *
+   * 未设置分支而由用户手动输入分支
+   */
+  inputBranch: string;
+  /**
    * 本地分支名
-   *
    */
   localBranch: string;
   /**
@@ -62,9 +64,9 @@ export type GitInfo = {
 
 /**  使用参数  */
 export type CommandParameters = {
-  /**  远程库别名  */
+  /**  上游库别名  */
   alias: string;
-  /**  远程分支  */
+  /**  上游分支  */
   branch: string;
   /**  初始化   */
   init: boolean;

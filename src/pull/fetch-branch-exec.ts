@@ -22,20 +22,20 @@ export async function execFetchBranch(): Promise<boolean> {
     // 未找到同名分支（其实 branch 存在时可以跳过检测）
     return await chooseForceOr();
   } else if (!branch) {
-    SUCCESS(`未设置默认远程分支，但是检测到远程存在同名分支
+    SUCCESS(`未设置默认上游分支，但是检测到上游存在同名分支
       `);
   }
   return true;
 }
 
 /**
- * ## 在没有找到同名远程分支（此时肯定没有远程分支设定）
- * @returns 返回 false ，无论是设定远程分支还是推送到同名分支，都跳过 merge
+ * ## 在没有找到同名上游分支（此时肯定没有上游分支设定）
+ * @returns 返回 false ，无论是设定上游分支还是推送到同名分支，都跳过 merge
  */
 export async function chooseForceOr(): Promise<boolean> {
-  const tip = ['推送到同名分支', '设定其他远程分支名', '直接退出'];
+  const tip = ['推送到同名分支', '设定其他上游分支名', '直接退出'];
   const result = await question({
-    text: '当前未设定远程默认推送分支（也未找到同名分支）',
+    text: '当前未设定上游默认推送分支（也未找到同名分支）',
     tip,
     private: true,
   });
@@ -43,7 +43,11 @@ export async function chooseForceOr(): Promise<boolean> {
   if (isUndefined(result) || result === tip[2])
     // 主动退出
     return await markVoluntaryWithdrawal();
-  if (result === tip[0]) return false; // 推送到同名分支
+  if (result === tip[0]) {
+    const { gitInfo } = dataStore;
+    gitInfo.inputBranch = gitInfo.localBranch;
+    return false; // 推送到同名分支
+  }
   await inputOtherBranchName();
   return false;
 }
@@ -59,17 +63,10 @@ async function inputOtherBranchName() {
   const { alias } = gitInfo;
   if (isUndefined(result)) return await markVoluntaryWithdrawal(); // 用户退出
   dog('用户输入的其他分支名: ', alias, result);
-  // dataStore.gitInfo.force = true;
   const isHaveRemoteBranch = await checkRemoteBranch(alias, result);
-  if (isHaveRemoteBranch) {
-    return await duplicateNamesNotAllowed();
-  }
+  if (isHaveRemoteBranch) return await duplicateNamesNotAllowed();
 
-  await checkIsSIGINT(
-    await runOtherCode(`git push --set-upstream ${alias} ${result}`),
-  );
-
-  dataStore.gitInfo.branch = result; // 设置新的分支
+  dataStore.gitInfo.inputBranch = result; // 设置新的分支
 }
 
 /**
@@ -78,28 +75,30 @@ async function inputOtherBranchName() {
 async function duplicateNamesNotAllowed(): Promise<any> {
   const tip = ['更改', '退出'];
   const response = await question({
-    text: '远端存在同名分支，更改还是退出？',
+    text: '上游存在同名分支，更改还是退出？',
     tip,
     private: true,
   });
   if (isUndefined(response) || response === tip[1])
     return await markVoluntaryWithdrawal();
-  await checkIsSIGINT(await runOtherCode('git remote -v'));
-  _p(`当前远程分支情况为（尽量不使用已存在的远端分支名）：`);
+  await checkIsSIGINT(
+    await runOtherCode({ code: 'git remote -v', printLog: true }),
+  );
+  _p(`当前上游分支情况为（尽量不使用已存在的上游分支名）：`);
   if (response === tip[0]) return inputOtherBranchName();
 }
 
 /**
- * 校验远程是否存在同名分支
- * @param alias 远程别名
- * @param branch 远程分支名
+ * 校验上游是否存在同名分支
+ * @param alias 上游别名
+ * @param branch 上游分支名
  */
 async function checkRemoteBranch(
   alias: string,
   branch: string,
 ): Promise<boolean> {
   // 》〉》〉》
-  // 仅拉取当前分支的设定默认绑定远程分支（不存在时则拉取同名的分支）
+  // 仅拉取当前分支的设定默认绑定上游分支（不存在时则拉取同名的分支）
   // const code = 'git fetch --all';
   const code = `git fetch ${alias}  ${branch}`;
   // 《〈《〈《
@@ -122,7 +121,7 @@ async function checkRemoteBranch(
         ),
       )
     ) {
-      return false; // 未找到远程同名分支
+      return false; // 未找到上游同名分支
     }
     const message = '拉取 <' + branch + '> 出错';
     dog.error(message, result);

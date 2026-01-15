@@ -16,7 +16,7 @@ export async function execFetchTag() {
   const { alias } = dataStore.gitInfo;
 
   if (!alias) {
-    return await gitError(`别名获取远端的标签不存在`);
+    return await gitError(`别名获取上游的标签不存在`);
   }
 
   const code = `git fetch ${alias} --tags`;
@@ -36,7 +36,7 @@ export async function execFetchTag() {
     if (/fatal:\s*repository\s*'.*'\s*not\s*found/i.test(result.error)) {
       const url = result.error.replace(/^.*['"](.*)['"].*\n$/im, '$1');
 
-      const message = `远端别名 ${redPen(alias)} 对应的地址 ${brightRedPen(url)} 不存在`;
+      const message = `上游别名 ${redPen(alias)} 对应的地址 ${brightRedPen(url)} 不存在`;
       return await gitError(message);
     }
     const message = '拉取线上 <' + alias + '> 的 tag出错';

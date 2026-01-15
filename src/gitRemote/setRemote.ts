@@ -6,17 +6,17 @@ import { checkIsSIGINT, gitError } from '../utils';
 import { cwd } from './../data-store/cwd';
 
 /**
- *  ## 配置远程库
- *  在通过 `question` 获取到远程仓库信息后，进行配置
+ *  ## 配置上游库
+ *  在通过 `question` 获取到上游仓库信息后，进行配置
  */
 export async function setRemote() {
   const { gitInfo } = dataStore;
   const code = `git remote add ${gitInfo.alias} ${gitInfo.url}`;
   const result = await runOtherCode({ code, cwd });
   await checkIsSIGINT(result);
-  dog('配置远程库', code, result);
+  dog('配置上游库', code, result);
 
   if (isFalse(result.success)) {
-    return await gitError('配置远程库故障', result.error);
+    return await gitError('配置上游库故障', result.error);
   }
 }

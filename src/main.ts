@@ -8,9 +8,12 @@
  * @copyright 2026 ©️ MrMudBean
  * @since 2026-01-15 11:09
  * @version 1.0.0
- * @lastModified 2026-01-16 00:49
+ * @lastModified 2026-01-16 01:26
  */
+import { question } from 'a-command';
+import { runOtherCode } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
+import { brightYellowPen, greenPen } from 'color-pen';
 import { command } from './command';
 import { dataStore } from './data-store';
 import { dog } from './dog';
@@ -69,4 +72,17 @@ export async function main(): Promise<void> {
   if (!isFalse(commandParameters.tag)) await tag(); // 打标签
   dog.warn('害怕不害怕');
   await push();
+
+  const { gitInfo } = dataStore;
+  const { inputBranch, alias, localBranch } = gitInfo;
+  if (inputBranch && inputBranch !== localBranch) {
+    const response = await question({
+      text: `是否将 ${greenPen(inputBranch)} 设置为 ${brightYellowPen(localBranch)} 的默认推送分支`,
+      tip: ['确认', '直接退出'],
+    });
+    if (response === '确认')
+      await runOtherCode(`git push --set-upstream ${alias} ${inputBranch}`);
+  } else if (inputBranch === localBranch) {
+    await runOtherCode(`git push --set-upstream ${alias} ${inputBranch}`);
+  }
 }

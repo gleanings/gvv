@@ -70,11 +70,11 @@ gvv 有两种创建模式：
 
 ```bash
 # 以勾子中携带类型模式为主
-npm run push:version -- -m "新版本" "添加主要功能" -m "待完善远程库配置"
+npm run push:version -- -m "新版本" "添加主要功能" -m "待完善上游配置"
 # 以命令行自定义类型模式为主，自定义的 kind 数据优先级要高于勾子中携带类型模式
-npm run push:version -- -k submit -m "新版本" "添加主要功能" -m "待完善远程库配置"
+npm run push:version -- -k submit -m "新版本" "添加主要功能" -m "待完善上游库配置"
 # 以命令行自定义类型模式为主
-npm run version -- -k version -m "新版本" "添加主要功能" -m "待完善远程库配置"
+npm run version -- -k version -m "新版本" "添加主要功能" -m "待完善上游库配置"
 ```
 
 ### 命令行自定义类型使用
@@ -87,7 +87,7 @@ npx gvv
 # 简单的提交版本更新而使用仅时间的信息
 npx gvv -k version
 # 使用默认提交类型 （两个 `-m` 不是必须的，仅是告诉你接受多同名参数）
-npx gvv -m "新版本" "添加主要功能" -m "待完善远程库配置"
+npx gvv -m "新版本" "添加主要功能" -m "待完善上游库配置"
 ```
 
 ### 推荐类型

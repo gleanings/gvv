@@ -7,7 +7,7 @@ import { gitError, markVoluntaryWithdrawal } from '../utils';
 
 /**
  *
- * 设置远程分支的别名
+ * 设置上游分支的别名
  *
  */
 export async function waitInputRemoteAlias() {
@@ -18,17 +18,17 @@ export async function waitInputRemoteAlias() {
   if (!isEmptyString(commandParameters.alias) && isEmptyString(gitInfo.alias)) {
     gitInfo.alias = commandParameters.alias;
     _p(
-      `已自动配置远程分支的别名为 🛠️ ${brightYellowPen(commandParameters.alias)}`,
+      `已自动配置上游分支的别名为 🛠️ ${brightYellowPen(commandParameters.alias)}`,
     );
 
     return;
   }
 
-  _p('当前未配置 🛠️ 远程库');
+  _p('当前未配置 🛠️ 上游库');
 
   const result = await question({
-    text: '请 🔧 配置远程分支的别名',
-    resultText: '设置远程分支的别名为',
+    text: '请 🔧 配置上游分支的别名',
+    resultText: '设置上游分支的别名为',
     tip: 'origin',
     required: false,
     private: false,
@@ -39,7 +39,7 @@ export async function waitInputRemoteAlias() {
   }
 
   if (isEmptyString(result) || isUndefined(result)) {
-    return await gitError('远程分支的别名不能为🈳');
+    return await gitError('上游分支的别名不能为🈳');
   }
 
   gitInfo.alias = result;

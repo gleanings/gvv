@@ -6,9 +6,9 @@ import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 
 /**
- * ## 获取远程分支
+ * ## 获取上游分支
  *
- * 当前在使用的分支的设置的远程通过 `git push --set-upstream origin` 设置的远程分支名。
+ * 当前在使用的分支的设置的上游通过 `git push --set-upstream origin` 设置的上游分支名。
  *
  * 如果未获取，可以在
  */
@@ -16,37 +16,45 @@ export async function getRemoteBranch() {
   const { gitInfo } = dataStore;
 
   const code = 'git rev-parse --abbrev-ref --symbolic-full-name @{u}';
-  /** 获取远程当前分支名的分支信息  */
+  /** 获取上游当前分支名的分支信息  */
   const result = await runOtherCode({ code, cwd });
-  dog('获取远程当前分支的信息', code, result);
-  /**  获取远程分支信息 失败  */
+  dog('获取上游当前分支的信息', code, result);
+  /**  获取上游分支信息 失败  */
   if (isFalse(result.success)) {
-    dog.warn('获取本地分支关联的远程分支出错', result);
-    /**  未设置远程分支  */
+    dog.warn('获取本地分支关联的上游分支出错', result);
+    /**  未设置上游分支  */
     if (
       isString(result.error) &&
-      [result.error, result.data].some(e =>
-        e.includes('fatal: no upstream configured for branch'),
+      [result.error, result.data].some(
+        e =>
+          e.includes('fatal: no upstream configured for branch') ||
+          // 上游分支被破坏的时候，比如手动删除了上游而本地依旧有该分支
+          e.includes(
+            "fatal: ambiguous argument '@{u}': unknown revision or path not in the working tree",
+          ) ||
+          e.includes(
+            "fatal: ambiguous argument '@{u}': unknown revision or path not in the working tree",
+          ),
       )
     ) {
-      // 未设置远程关联的分支时直接返回🈳字符串
+      // 未设置上游关联的分支时直接返回🈳字符串
       return;
     } else {
-      // 获取远程分支时出错
+      // 获取上游分支时出错
       return await gitError(result.error);
     }
   }
-  dog('获取当前分支关联的远程分支', result);
-  /**  获取远程分支信息 ✅  */
+  dog('获取当前分支关联的上游分支', result);
+  /**  获取上游分支信息 ✅  */
   const remoteBranch = result.data!.trim().replace(/\n/g, '');
-  /**  分割远程分支信息  */
+  /**  分割上游分支信息  */
   const tip = remoteBranch.indexOf('/');
 
-  /**  配置远程库的别名，该值为🈳（用户未主动配置该值）时，则设置该值  */
+  /**  配置上游库的别名，该值为🈳（用户未主动配置该值）时，则设置该值  */
   if (isEmptyString(gitInfo.alias)) {
     gitInfo.alias = remoteBranch.slice(0, tip);
   }
-  /**  配置远程分支名，该值为🈳（用户未主动配置该值）时，则设置该值  */
+  /**  配置上游分支名，该值为🈳（用户未主动配置该值）时，则设置该值  */
   if (isEmptyString(gitInfo.branch)) {
     gitInfo.branch = remoteBranch.slice(tip + 1);
   }

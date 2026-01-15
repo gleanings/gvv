@@ -15,4 +15,5 @@ export const gitInfo: GitInfo = {
   tagged: false,
   committed: false,
   isRoot: true,
+  inputBranch: '',
 };

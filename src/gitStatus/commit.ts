@@ -45,6 +45,14 @@ export async function commit() {
   dog('提交代码', code, result);
 
   if (isFalse(result.success)) {
+    if (
+      [result.data, result.error].some(e =>
+        e.includes('fatal: not a valid object name:'),
+      )
+    ) {
+      await checkIsSIGINT(await runOtherCode(`git branch main`));
+    }
+
     dog.error('暂存区文件提交异常', result.error);
     return await gitError('提交代码失败');
   }
