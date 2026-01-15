@@ -43,7 +43,7 @@ packageJson = {
     registry: 'https://registry.npmjs.org/',
   },
   bin: {
-    gvv: './bin.js',
+    gvv: 'bin.js',
   },
   engines: {
     // 新增：声明 Node.js 兼容版本
