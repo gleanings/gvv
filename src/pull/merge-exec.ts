@@ -1,6 +1,6 @@
-import { _p, runOtherCode } from 'a-node-tools';
-import { isFalse } from 'a-type-of-js';
-import { magentaPen } from 'color-pen';
+import { isFalse } from '@vvi/is';
+import { _p, runOtherCode } from '@vvi/node';
+import { magentaPen } from '@vvi/pen';
 import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
 import { dog } from '../dog';

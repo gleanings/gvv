@@ -1,4 +1,4 @@
-import { isEmptyArray } from 'a-type-of-js';
+import { isEmptyArray } from '@vvi/is';
 import { dataStore } from '../data-store';
 import { dog, dun } from '../dog';
 import { now } from '../utils';

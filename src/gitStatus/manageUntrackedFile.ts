@@ -1,6 +1,6 @@
-import { selection, SUCCESS } from 'a-command';
-import { runOtherCode } from 'a-node-tools';
-import { isEmptyString, isFalse, isUndefined } from 'a-type-of-js';
+import { selection, SUCCESS } from '@vvi/command';
+import { isEmptyString, isFalse, isUndefined } from '@vvi/is';
+import { runOtherCode } from '@vvi/node';
 import { dataStore } from '../data-store/index';
 import { dog } from '../dog';
 import { checkIsSIGINT, gitError } from '../utils';

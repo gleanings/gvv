@@ -1,5 +1,5 @@
-import { fileExist, getDirectoryBy, pathJoin } from 'a-node-tools';
-import { isUndefined } from 'a-type-of-js';
+import { isUndefined } from '@vvi/is';
+import { fileExist, getDirectoryBy, pathJoin } from '@vvi/node';
 import { dog } from '../dog';
 import { gitInfo } from './gitInfo';
 

@@ -8,7 +8,7 @@
  * @copyright 2026 ©️ MrMudBean
  * @since 2026-01-14 23:43
  * @version 0.1.8
- * @lastModified 2026-01-15 23:39
+ * @lastModified 2026-06-27 02:04
  *
  * 原使用 `git branch` 获取当前所有的分支，并通过换行符分割提取。
  *
@@ -20,8 +20,8 @@
  * ```
  * 现使用 `git branch --show-current` （在分离头指针状态返回为空） 或 `git rev-parse --abbrev-ref HEAD` （在分离头指针状态返回值为 "HEAD" ）
  */
-import { runOtherCode } from 'a-node-tools';
-import { isFalse } from 'a-type-of-js';
+import { isFalse } from '@vvi/is';
+import { runOtherCode } from '@vvi/node';
 import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
 import { checkIsSIGINT, gitError } from '../utils';
@@ -40,6 +40,9 @@ export async function getLocalBranch() {
     return await gitError(result.error);
   }
   // 获取本地分支，没有获取默认为主分支 'main'
-  dataStore.gitInfo.localBranch =
-    result.data?.trim().replace(/\n/g, '') || 'main';
+  const branch = result.data?.trim().replace(/\n/g, '');
+  if (branch) {
+      await runOtherCode('git branch main')
+  }
+  dataStore.gitInfo.localBranch = branch || 'main';
 }

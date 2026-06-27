@@ -1,6 +1,6 @@
-import { runOtherCode } from 'a-node-tools';
-import { isFalse } from 'a-type-of-js';
-import { brightRedPen, redPen } from 'color-pen';
+import { isFalse } from '@vvi/is';
+import { runOtherCode } from '@vvi/node';
+import { brightRedPen, redPen } from '@vvi/pen';
 import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
 import { dog } from '../dog';

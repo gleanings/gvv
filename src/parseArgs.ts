@@ -1,4 +1,4 @@
-import { isFalse, isUndefined } from 'a-type-of-js';
+import { isFalse, isUndefined } from '@vvi/is';
 import { command } from './command';
 import { dataStore } from './data-store';
 import { dog, dun } from './dog';
@@ -6,9 +6,7 @@ import { getMessage } from './gitStatus/getMessage';
 import { getVersion } from './tag/getVersion';
 
 /**
- *
- * 解析参数
- *
+ * # 解析参数
  */
 export function parseArgs(): void {
   const { commandParameters } = dataStore;

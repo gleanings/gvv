@@ -1,4 +1,4 @@
-import { runOtherCode } from 'a-node-tools';
+import { runOtherCode } from '@vvi/node';
 import { checkIsSIGINT } from '../utils';
 import { add } from './add';
 import { stagingArea } from './commit';

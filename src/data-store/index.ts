@@ -1,4 +1,4 @@
-import { isFalse } from 'a-type-of-js';
+import { isFalse } from '@vvi/is';
 import { DateStore } from '../types';
 import { commandParameters } from './commandParameters';
 import { gitInfo } from './gitInfo';

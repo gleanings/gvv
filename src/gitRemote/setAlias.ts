@@ -1,17 +1,14 @@
-import { _p } from 'a-node-tools';
-import { isTrue } from 'a-type-of-js';
-import { italicPen, pen } from 'color-pen';
+import { isTrue } from '@vvi/is';
+import { _p } from '@vvi/node';
+import { italicPen, pen } from '@vvi/pen';
 
 import { dataStore } from '../data-store';
 import { commandParameters } from '../data-store/commandParameters';
 
 /**
- *
- * 设置一个上游库别名
- *
+ * # 设置一个上游库别名
  * @param currentAlias 当前的上游库别名
  * @param [cover=false]  是否覆盖式设置值，用于打印信息不同判定的依据
- *
  */
 export function setAlias(currentAlias: string, cover: boolean = false) {
   const { gitInfo } = dataStore;

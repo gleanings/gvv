@@ -1,5 +1,5 @@
-import { runOtherCode } from 'a-node-tools';
-import { isFalse, isTrue } from 'a-type-of-js';
+import { isFalse, isTrue } from '@vvi/is';
+import { runOtherCode } from '@vvi/node';
 import { dataStore } from '../data-store';
 import { getMessage } from '../gitStatus/getMessage';
 import { checkIsSIGINT, gitError, gitReset } from '../utils';

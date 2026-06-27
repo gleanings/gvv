@@ -1,12 +1,12 @@
-import { _p, runOtherCode } from 'a-node-tools';
-import { isFalse } from 'a-type-of-js';
+import { isFalse } from '@vvi/is';
+import { _p, runOtherCode } from '@vvi/node';
 import {
   brightCyanPen,
   brightGreenPen,
   cyanPen,
   greenPen,
   magentaPen,
-} from 'color-pen';
+} from '@vvi/pen';
 import { gitInfo } from '../data-store/gitInfo';
 import { removeExitEvent } from '../onExit';
 import { checkIsSIGINT, markVoluntaryWithdrawal } from '../utils';

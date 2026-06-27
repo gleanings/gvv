@@ -4,9 +4,9 @@ import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import cleanup from 'rollup-plugin-cleanup';
 import copy from 'rollup-plugin-copy';
-import { external } from '@qqi/rollup-external';
+import { external } from '@vvi/rollup-external';
 import terser from '@rollup/plugin-terser';
-import license from 'rollup-plugin-license';
+// import license from 'rollup-plugin-license';
 
 export default {
   input: {
@@ -23,17 +23,6 @@ export default {
   })),
   // 配置需要排除的包
   external: external({
-    include: [
-      'a-command',
-      'color-pen',
-      '@qqi/log',
-      'a-type-of-js',
-      'a-node-tools',
-      'a-js-tools',
-      '@color-pen/static',
-      'a-type-of-js/isFunction',
-      'a-type-of-js/isNumber',
-    ],
     ignore: ['node:'],
   }),
   plugins: [
@@ -51,26 +40,25 @@ export default {
     cleanup(),
     copy({
       targets: [
-        { src: 'README.md', dest: 'dist' },
-        { src: 'LICENSE', dest: 'dist' },
+        { src: ['README.md', 'LICENSE', 'CHANGELOG.md'], dest: 'dist' },
       ],
     }),
-    license({
-      thirdParty: {
-        allow: '(MIT OR Apache-2.0 OR BSD-3-Clause)', // 仅允许这些许可证依赖
-        output: {
-          file: 'dist/THIRD-PARTY-LICENSES.txt',
-          template: dependencies =>
-            `THIRD-PARTY LICENSE\n${'='.repeat(50)}\n\n`.concat(
-              dependencies
-                ?.map(
-                  dep =>
-                    `${dep.name} (${dep.version})\n${'-'.repeat(30)}\n${dep.licenseText}\n`,
-                )
-                .join('\n'),
-            ),
-        },
-      },
-    }),
+    // license({
+    //   thirdParty: {
+    //     allow: '(MIT OR Apache-2.0 OR BSD-3-Clause)', // 仅允许这些许可证依赖
+    //     output: {
+    //       file: 'dist/THIRD-PARTY-LICENSES.txt',
+    //       template: dependencies =>
+    //         `THIRD-PARTY LICENSE\n${'='.repeat(50)}\n\n`.concat(
+    //           dependencies
+    //             ?.map(
+    //               dep =>
+    //                 `${dep.name} (${dep.version})\n${'-'.repeat(30)}\n${dep.licenseText}\n`,
+    //             )
+    //             .join('\n'),
+    //         ),
+    //     },
+    //   },
+    // }),
   ],
 };

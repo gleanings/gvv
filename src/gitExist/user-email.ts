@@ -1,12 +1,12 @@
-import { question } from 'a-command';
-import { runOtherCode } from 'a-node-tools';
-import { isEmptyString, isUndefined } from 'a-type-of-js';
+import { question } from '@vvi/command';
+import { isEmptyString, isUndefined } from '@vvi/is';
+import { runOtherCode } from '@vvi/node';
 import { checkIsSIGINT, gitError, markVoluntaryWithdrawal } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 
 /**
- * git 的账户
+ * # git 的账户
  */
 export async function gitUserEmail() {
   let code = 'git config user.email';
@@ -27,9 +27,7 @@ export async function gitUserEmail() {
 }
 
 /**
- *
- *  设置 git 的用户名
- *
+ * # 设置 git 的用户名
  */
 export async function setUserEmail() {
   const email = await question({

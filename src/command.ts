@@ -1,5 +1,5 @@
-import { Args } from 'a-command';
-import { redPen } from 'color-pen';
+import { Args } from '@vvi/command';
+import { redPen } from '@vvi/pen';
 
 /**
  * 终端命令

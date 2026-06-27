@@ -1,9 +1,7 @@
-import { isUndefined } from 'a-type-of-js';
+import { isUndefined } from '@vvi/is';
 import { dog } from './../dog';
 /**
- *
- * 解析上游库别名
- *
+ * # 解析上游库别名
  * @param remote
  */
 export function parseRemoteAlias(remote: string) {

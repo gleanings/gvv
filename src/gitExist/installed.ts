@@ -1,5 +1,5 @@
-import { runOtherCode } from 'a-node-tools';
-import { isFalse } from 'a-type-of-js';
+import { isFalse } from '@vvi/is';
+import { runOtherCode } from '@vvi/node';
 import { gitError } from '../utils';
 import { waiting } from '../waiting';
 import { cwd } from './../data-store/cwd';

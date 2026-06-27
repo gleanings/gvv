@@ -1,5 +1,5 @@
-import { pathJoin, writeJsonFileSync, getPackageJsonSync } from 'a-node-tools';
-import { isNull } from 'a-type-of-js';
+import { pathJoin, writeJsonFileSync, getPackageJsonSync } from '@vvi/node';
+import { isNull } from '@vvi/is';
 import { dirname } from 'node:path';
 
 const packageJsonResponse = getPackageJsonSync();
@@ -9,13 +9,14 @@ if (isNull(packageJsonResponse)) {
 }
 
 let packageJson = packageJsonResponse.content;
-
+let dependencies = packageJson.dependencies;
 [
   'scripts',
   'devDependencies',
   'lint-staged',
   'private',
   'dependencies',
+  'packageManager',
 ].forEach(key => delete packageJson[key]);
 
 packageJson = {
@@ -23,13 +24,14 @@ packageJson = {
   author: {
     name: '泥豆君',
     email: 'Mr.MudBean@outlook.com',
-    url: 'https://earthnut.dev',
+    url: 'https://mudbean.cn',
   },
   description: 'git add ➞ git commit ➞ git push',
   license: 'MIT',
-  files: ['bin.js', 'LICENSE', 'README.md', 'THIRD-PARTY-LICENSES.txt'],
-  keywords: ['gvv', 'git', 'push', 'commit', 'add', 'tag'],
-  homepage: 'https://earthnut.dev/npm/gvv',
+  files: ['bin.js', 'LICENSE', 'README.md', 'THIRD-PARTY-LICENSES.txt','CHANGELOG.md'],
+  keywords: ['gvv', 'git', 'mudbean','vvi'],
+  homepage: 'https://npm.lmssee.com/gvv',
+  dependencies,
   bugs: {
     url: 'https://github.com/MrMudBean/gvv/issues',
     email: 'Mr.MudBean@outlook.com',

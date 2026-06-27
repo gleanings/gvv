@@ -1,13 +1,11 @@
-import { selection } from 'a-command';
-import { isEmptyString, isUndefined } from 'a-type-of-js';
+import { selection } from '@vvi/command';
+import { isEmptyString, isUndefined } from '@vvi/is';
 import { gitError, markVoluntaryWithdrawal } from '../utils';
 import { dog } from './../dog';
 import { setAlias } from './setAlias';
 
 /**
- *
- * 选择一个上游库别名
- *
+ * # 选择一个上游库别名
  */
 export async function chooseAlias(remoteAliases: { [x: string]: string }) {
   //  存在多个上游代码库的别名且都不包含主动设置的值时采用问询的方式设置值

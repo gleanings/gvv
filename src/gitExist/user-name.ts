@@ -1,10 +1,6 @@
-import { question } from 'a-command';
-import { runOtherCode } from 'a-node-tools';
-import {
-  isEmptyString,
-  isUndefined,
-  isBusinessEmptyString,
-} from 'a-type-of-js';
+import { question } from '@vvi/command';
+import { isEmptyString, isUndefined, isBusinessEmptyString } from '@vvi/is';
+import { runOtherCode } from '@vvi/node';
 import { checkIsSIGINT, gitError, markVoluntaryWithdrawal } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
@@ -36,9 +32,7 @@ export async function gitUser() {
 }
 
 /**
- *
- *  设置 git 的用户名
- *
+ * # 设置 git 的用户名
  */
 export async function setUserName() {
   const username = await question({

@@ -1,7 +1,7 @@
-import { question } from 'a-command';
-import { _p, runOtherCode } from 'a-node-tools';
-import { isFalse, isUndefined } from 'a-type-of-js';
-import { bluePen, cyanPen, greenPen, magentaPen } from 'color-pen';
+import { question } from '@vvi/command';
+import { isFalse, isUndefined } from '@vvi/is';
+import { _p, runOtherCode } from '@vvi/node';
+import { bluePen, cyanPen, greenPen, magentaPen } from '@vvi/pen';
 import { dataStore } from '../data-store/index';
 import { dog } from '../dog';
 import { checkIsSIGINT, gitError } from '../utils';

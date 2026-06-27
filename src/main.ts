@@ -8,12 +8,12 @@
  * @copyright 2026 ©️ MrMudBean
  * @since 2026-01-15 11:09
  * @version 1.0.0
- * @lastModified 2026-01-16 01:26
+ * @lastModified 2026-06-26 23:31
  */
-import { question } from 'a-command';
-import { runOtherCode } from 'a-node-tools';
-import { isFalse } from 'a-type-of-js';
-import { brightYellowPen, greenPen } from 'color-pen';
+import { question } from '@vvi/command';
+import { isFalse } from '@vvi/is';
+import { runOtherCode } from '@vvi/node';
+import { brightYellowPen, greenPen } from '@vvi/pen';
 import { command } from './command';
 import { dataStore } from './data-store';
 import { dog } from './dog';
@@ -30,7 +30,7 @@ import { tag } from './tag';
 import { checkTags } from './tag/checkTags';
 
 /**
- * 主程序入口
+ * # 主程序入口
  */
 export async function main(): Promise<void> {
   // if (dun) {

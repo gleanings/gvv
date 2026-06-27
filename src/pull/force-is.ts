@@ -1,6 +1,6 @@
-import { selection } from 'a-command';
-import { isFalse, isUndefined, isZero } from 'a-type-of-js';
-import { blinkPen, brightRedPen, greenPen } from 'color-pen';
+import { selection } from '@vvi/command';
+import { isFalse, isUndefined, isZero } from '@vvi/is';
+import { blinkPen, brightRedPen, greenPen } from '@vvi/pen';
 import { commandParameters } from '../data-store/commandParameters';
 import { markVoluntaryWithdrawal } from '../utils';
 /**

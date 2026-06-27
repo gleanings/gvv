@@ -8,7 +8,7 @@
  * @copyright 2026 ©️ MrMudBean
  * @since 2025-04-01 20:00
  * @version 1.0.0
- * @lastModified 2026-01-15 23:45
+ * @lastModified 2026-06-26 22:19
  *
  * - notTrack() 检测 git 已追踪的文件列表，仅关注是否
  * - trackFile() 已追踪的文件列表，不关注修改状态
@@ -16,7 +16,7 @@
  * - trackedButNotStaged() 已追踪且修改未添加到暂存区的文件列表
  * - trackedNotSubmitted() 已追踪且修改添加到暂存区未提交的列表
  */
-import { runOtherCode } from 'a-node-tools';
+import { runOtherCode } from '@vvi/node';
 import { cwd } from '../data-store/cwd';
 import { dog } from '../dog';
 import { checkIsSIGINT } from '../utils';

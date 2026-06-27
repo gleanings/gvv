@@ -1,5 +1,5 @@
-import { runOtherCode } from 'a-node-tools';
-import { isFalse } from 'a-type-of-js';
+import { isFalse } from '@vvi/is';
+import { runOtherCode } from '@vvi/node';
 import { dataStore } from '../data-store';
 import { checkIsSIGINT, gitError, markVoluntaryWithdrawal } from '../utils';
 import { cwd } from './../data-store/cwd';
@@ -31,9 +31,7 @@ export async function stagingArea() {
 }
 
 /**
- *
- * 提交代码
- *
+ * # 提交代码
  */
 export async function commit() {
   const { gitInfo } = dataStore;

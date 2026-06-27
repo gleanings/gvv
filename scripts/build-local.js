@@ -1,6 +1,6 @@
-import { _p, isWindows, pathJoin, runOtherCode } from 'a-node-tools';
-import { copyTextToClipboard } from '@qqi/copy-text';
-import { brightBlackPen, cyanPen, randomPen } from 'color-pen';
+import { _p, isWindows, pathJoin, runOtherCode } from '@vvi/node';
+import { copyTextToClipboard } from '@vvi/copy-text';
+import { brightBlackPen, cyanPen, randomPen } from '@vvi/pen';
 
 await runOtherCode('pnpm jja cls');
 

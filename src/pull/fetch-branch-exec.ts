@@ -1,6 +1,6 @@
-import { question, SUCCESS } from 'a-command';
-import { _p, runOtherCode } from 'a-node-tools';
-import { isFalse, isUndefined } from 'a-type-of-js';
+import { question, SUCCESS } from '@vvi/command';
+import { isFalse, isUndefined } from '@vvi/is';
+import { _p, runOtherCode } from '@vvi/node';
 import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
 import { dog } from '../dog';

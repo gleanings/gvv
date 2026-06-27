@@ -1,6 +1,6 @@
-import { _p, runOtherCode } from 'a-node-tools';
-import { isEmptyString } from 'a-type-of-js';
-import { randomPen } from 'color-pen';
+import { isEmptyString } from '@vvi/is';
+import { _p, runOtherCode } from '@vvi/node';
+import { randomPen } from '@vvi/pen';
 import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
 import { checkIsSIGINT } from '../utils';

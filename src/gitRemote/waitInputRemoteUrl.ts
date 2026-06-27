@@ -1,6 +1,6 @@
-import { question } from 'a-command';
-import { _p } from 'a-node-tools';
-import { isEmptyString, isUndefined } from 'a-type-of-js';
+import { question } from '@vvi/command';
+import { isEmptyString, isUndefined } from '@vvi/is';
+import { _p } from '@vvi/node';
 import { dataStore } from '../data-store';
 import { gitError, markVoluntaryWithdrawal } from '../utils';
 

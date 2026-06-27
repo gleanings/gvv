@@ -1,5 +1,5 @@
-import { runOtherCode } from 'a-node-tools';
-import { isTrue } from 'a-type-of-js';
+import { isTrue } from '@vvi/is';
+import { runOtherCode } from '@vvi/node';
 import { dataStore } from '../data-store';
 import { checkIsSIGINT } from '../utils';
 import { cwd } from './../data-store/cwd';
@@ -7,9 +7,7 @@ import { gitInfo } from './../data-store/gitInfo';
 import { dog } from './../dog';
 
 /**
- *
- * 删除已打好的 tag
- *
+ * # 删除已打好的 tag
  */
 export async function deleteTag() {
   const { pkg, tag } = dataStore;

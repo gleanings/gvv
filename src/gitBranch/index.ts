@@ -1,14 +1,4 @@
-/****************************************************************************
- *  @Author earthnut
- *  @Email earthnut.dev@outlook.com
- *  @ProjectName gvv
- *  @FileName index.ts
- *  @CreateDate  周日  04/13/2025
- *  @Description git 的分支分析 🧐
- *
- *
- ****************************************************************************/
-import { isEmptyString } from 'a-type-of-js';
+import { isEmptyString } from '@vvi/is';
 import { dataStore } from '../data-store';
 import { hasRemote } from '../gitRemote';
 import { getLocalBranch } from './getLocalBranch';

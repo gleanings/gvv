@@ -1,5 +1,5 @@
-import { runOtherCode } from 'a-node-tools';
-import { isFalse } from 'a-type-of-js';
+import { isFalse } from '@vvi/is';
+import { runOtherCode } from '@vvi/node';
 import { cwd } from '../data-store/cwd';
 import { gitInfo } from '../data-store/gitInfo';
 import { dog } from '../dog';

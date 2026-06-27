@@ -1,7 +1,7 @@
-import { question } from 'a-command';
-import { _p, runOtherCode } from 'a-node-tools';
-import { isString, isFalse, isUndefined } from 'a-type-of-js';
-import { greenPen } from 'color-pen';
+import { question } from '@vvi/command';
+import { isString, isFalse, isUndefined } from '@vvi/is';
+import { _p, runOtherCode } from '@vvi/node';
+import { greenPen } from '@vvi/pen';
 import { command } from '../command';
 import { checkIsSIGINT, gitError, markVoluntaryWithdrawal } from '../utils';
 import { cwd } from './../data-store/cwd';

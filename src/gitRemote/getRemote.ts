@@ -1,6 +1,6 @@
-import { _p, runOtherCode } from 'a-node-tools';
-import { isBusinessEmptyString, isZero } from 'a-type-of-js';
-import { magentaPen } from 'color-pen';
+import { isBusinessEmptyString, isZero } from '@vvi/is';
+import { _p, runOtherCode } from '@vvi/node';
+import { magentaPen } from '@vvi/pen';
 import { commandParameters } from '../data-store/commandParameters';
 import { gitInfo } from '../data-store/gitInfo';
 import { checkIsSIGINT, gitError } from '../utils';
@@ -11,9 +11,7 @@ import { parseRemoteAlias } from './parseRemoteAlias';
 import { setAlias } from './setAlias';
 
 /**
- *
- * 获取上游库信息
- *
+ * # 获取上游库信息
  */
 export async function getRemote() {
   const code = 'git remote -v';

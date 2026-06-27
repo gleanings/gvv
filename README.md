@@ -108,6 +108,8 @@ npx gvv -m "新版本" "添加主要功能" -m "待完善上游库配置"
 - chore 构架/工具链优化（不影响）
 - version 版本提交（我主要根据）
 
-## 文档地址
+## 状态
 
-参看 [https://earthnut.dev/npm/gvv/](https://earthnut.dev/npm/gvv/)
+此软件包是 `MrMudBean` 生态系统的一部分。
+它使用严格的 TypeScript 编写，并通过 Rollup 构建进行验证。
+虽然单元测试较少，但 API 稳定，并在生产环境中大量使用。

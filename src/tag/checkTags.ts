@@ -1,6 +1,6 @@
-import { _p, runOtherCode } from 'a-node-tools';
-import { isFalse, isTrue } from 'a-type-of-js';
-import { cyanPen, hexPen, randomPen } from 'color-pen';
+import { isFalse, isTrue } from '@vvi/is';
+import { _p, runOtherCode } from '@vvi/node';
+import { cyanPen, hexPen, randomPen } from '@vvi/pen';
 import { dataStore } from '../data-store';
 import { checkIsSIGINT, gitError, markVoluntaryWithdrawal } from '../utils';
 import { cwd } from './../data-store/cwd';
@@ -8,9 +8,7 @@ import { dog } from './../dog';
 import { getVersion } from './getVersion';
 
 /**
- *
- * 获取本地的标签
- *
+ * # 获取本地的标签
  */
 export async function checkTags() {
   // 当未使用 tag 或者主动给 tag 赋值 true 时意味着使用 当前的版本作为 tag 值
