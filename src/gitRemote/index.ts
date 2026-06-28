@@ -1,9 +1,7 @@
 /**
- *
  * - 没有上游库时则显示输入。并在获取输入后使用 `git remote add` 添加上游仓库
  * - 当上游仓库为一个时，则使用该仓库
  * - 当有两个以上的仓库存在，则显示选择
- *
  */
 import { isEmptyString } from '@vvi/is';
 import { dataStore } from '../data-store';

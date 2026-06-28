@@ -10,7 +10,6 @@ import {
 import { gitInfo } from '../data-store/gitInfo';
 import { removeExitEvent } from '../onExit';
 import { checkIsSIGINT, markVoluntaryWithdrawal } from '../utils';
-import { waiting } from '../waiting';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 import { pushFail } from './pushFail';
@@ -24,13 +23,9 @@ export async function push() {
   /**  执行的 shell 命令  */
   const code = `git push ${alias} ${localBranch}:${pushBrach} --tags ${force ? '--force' : ''}`;
 
-  waiting.run(
-    `正在将本地 ${greenPen(localBranch)} 推送到 ${magentaPen(alias)} 的 ${cyanPen(pushBrach)} `,
-  );
-
   const result = await runOtherCode({
     code,
-    waiting,
+    waiting: `正在将本地 ${greenPen(localBranch)} 推送到 ${magentaPen(alias)} 的 ${cyanPen(pushBrach)} `,
     cwd,
   });
   dog('执行推送的代码为：', code, result);

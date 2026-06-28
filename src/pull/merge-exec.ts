@@ -5,7 +5,6 @@ import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
 import { dog } from '../dog';
 import { checkIsSIGINT, gitError } from '../utils';
-import { waiting } from '../waiting';
 
 /**
  * ## 合并分支
@@ -16,10 +15,9 @@ export async function execMerge() {
   const mergeBrach = branch || localBranch;
   const code = `git merge  ${alias}/${mergeBrach}`;
 
-  waiting.run('请等待代码合并');
   const result = await runOtherCode({
     code,
-    waiting,
+    waiting: '请等待代码合并',
     cwd,
   });
   await checkIsSIGINT(result);

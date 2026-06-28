@@ -5,7 +5,6 @@ import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
 import { dog } from '../dog';
 import { checkIsSIGINT, gitError, markVoluntaryWithdrawal } from '../utils';
-import { waiting } from '../waiting';
 
 /**
  * ## 执行请求
@@ -101,15 +100,13 @@ async function checkRemoteBranch(
   // 仅拉取当前分支的设定默认绑定上游分支（不存在时则拉取同名的分支）
   // const code = 'git fetch --all';
   const code = `git fetch ${alias}  ${branch}`;
-  // 《〈《〈《
-  waiting.run({
-    info: '请稍等，正在同步线上数据',
-    prefix: 0,
-  });
   const result = await runOtherCode({
     code,
     cwd,
-    waiting,
+    waiting: {
+      info: '请稍等，正在同步线上数据',
+      prefix: 0,
+    },
   });
   await checkIsSIGINT(result);
   dog('请求线上代码', code, result);

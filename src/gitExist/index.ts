@@ -7,11 +7,11 @@ import { gitUser } from './user-name';
  */
 export async function gitExist(): Promise<void> {
   // git 是否安装
-  await gitInstalled(); 
+  await gitInstalled();
 
   // git 用户名
-  await gitUser(); 
+  await gitUser();
 
   // git 邮箱
-  await gitUserEmail(); 
+  await gitUserEmail();
 }

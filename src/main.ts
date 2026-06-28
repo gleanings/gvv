@@ -8,7 +8,7 @@
  * @copyright 2026 ©️ MrMudBean
  * @since 2026-01-15 11:09
  * @version 1.0.0
- * @lastModified 2026-06-26 23:31
+ * @lastModified 2026-06-27 23:41
  */
 import { question } from '@vvi/command';
 import { isFalse } from '@vvi/is';
@@ -54,7 +54,9 @@ export async function main(): Promise<void> {
     command.end(); // 结束命令行
   }
   await gitExist(); // 判断当前项目是否是 git 项目
+
   dog.warn('是否安装 git 应用检测完毕');
+
   await gitBranch(); // 获取当前的分支情况
   dog.warn('当前分支情况判断完毕');
   await execFetchTag();

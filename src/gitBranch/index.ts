@@ -20,6 +20,8 @@ export async function gitBranch(): Promise<void> {
   const { gitInfo } = dataStore;
   // 当两者中的任一个没有值，说明未设置默认推送关联分支
   // 两个值同时在  `getRemoteBranch` 中 配置，没有值意味着并没有配置默认推送的
-  if ([gitInfo.alias, gitInfo.branch].some(e => isEmptyString(e)))
+
+  if ([gitInfo.alias, gitInfo.branch].some(e => isEmptyString(e))) {
     await hasRemote(); // 验证上游库是否配置
+  }
 }

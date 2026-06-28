@@ -5,7 +5,6 @@ import { bluePen, cyanPen, greenPen, magentaPen } from '@vvi/pen';
 import { dataStore } from '../data-store/index';
 import { dog } from '../dog';
 import { checkIsSIGINT, gitError } from '../utils';
-import { waiting } from '../waiting';
 /**  合并之前  */
 export async function beforeMerge() {
   const { branch, alias, localBranch } = dataStore.gitInfo;
@@ -14,8 +13,10 @@ export async function beforeMerge() {
   const code = `git merge-tree --write-tree HEAD ${alias}/${branch || localBranch}`;
   /// 返回具体的执行冲突文件及部位 ,判定 <<<<<<< 或 >>>>>>> 来确定有冲突
   // const code = `git merge-tree --write-tree \`git merge-base HEAD ${alias}/${branch}\` HEAD ${alias}/${branch}`;
-  waiting.run('正在执行' + cyanPen(code));
-  const result = await runOtherCode({ code, waiting });
+  const result = await runOtherCode({
+    code,
+    waiting: '正在执行' + cyanPen(code),
+  });
   dog('冲突判断', result);
   await checkIsSIGINT(result);
   if (isFalse(result.success)) {

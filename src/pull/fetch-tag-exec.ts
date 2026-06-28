@@ -5,7 +5,6 @@ import { dataStore } from '../data-store';
 import { cwd } from '../data-store/cwd';
 import { dog } from '../dog';
 import { checkIsSIGINT, gitError } from '../utils';
-import { waiting } from '../waiting';
 
 /**
  *
@@ -20,13 +19,13 @@ export async function execFetchTag() {
   }
 
   const code = `git fetch ${alias} --tags`;
-  waiting.run({
-    prefix: 1,
-    info: '正在拉取线上 tag 数据',
-  });
+
   const result = await runOtherCode({
     code,
-    waiting,
+    waiting: {
+      prefix: 1,
+      info: '正在拉取线上 tag 数据',
+    },
     cwd,
   });
   dog('执行拉起线上标签', code, result);
