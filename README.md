@@ -1,6 +1,6 @@
 # git velocity voyager (gvv 一键 git 提交)
 
-[![version](<https://img.shields.io/npm/v/gvv.svg?logo=npm&logoColor=rgb(0,0,0)&label=版本号&labelColor=rgb(73,73,228)&color=rgb(0,0,0)>)](https://www.npmjs.com/package/gvv) [![bug 🙋‍♂️ 提交](<https://img.shields.io/badge/☣️-bug_%20_提交-rgb(255,0,63)>)](https://github.com/MrMudBean/gvv/issues)
+[![version](<https://img.shields.io/npm/v/gvv.svg?logo=npm&logoColor=rgb(0,0,0)&label=版本号&labelColor=rgb(73,73,228)&color=rgb(0,0,0)>)](https://www.npmjs.com/package/gvv) [![bug 🙋‍♂️ 提交](<https://img.shields.io/badge/☣️-bug_%20_提交-rgb(255,0,63)>)](https://github.com/gleanings/gvv/issues)
 
 ---
 

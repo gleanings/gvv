@@ -7,9 +7,7 @@ import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 
 /**
- *
- * 打标签
- *
+ * # 打标签
  */
 export async function tag() {
   const { tag, pkg, gitInfo } = dataStore;
@@ -17,6 +15,7 @@ export async function tag() {
   if (isFalse(tag)) {
     return await gitError('未指定 tag 参数');
   }
+
   dog('开始执行 tag: ', tag, ':');
 
   let code: string;
@@ -29,6 +28,7 @@ export async function tag() {
   }
 
   const result = await runOtherCode({ code, cwd });
+  
   await checkIsSIGINT(result);
   dog('执行打标签的代码为 <', code, result);
   if (isFalse(result.success)) {

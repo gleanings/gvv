@@ -6,6 +6,7 @@ import { checkIsSIGINT, gitError, markVoluntaryWithdrawal } from '../utils';
 import { cwd } from './../data-store/cwd';
 import { dog } from './../dog';
 import { getVersion } from './getVersion';
+import { question } from '@vvi/command';
 
 /**
  * # 获取本地的标签
@@ -42,12 +43,37 @@ export async function checkTags() {
   // tag 值在上面 getVersion 时触发了更改，这里需要重新给值
 
   dog('当前的 tag 值为', tag);
+  let tagValue = isTrue(tag) ? `v${pkg.version}` : String(tag);
 
-  if (tagList.includes(isTrue(tag) ? `v${pkg.version}` : tag.toString())) {
+  if (tagList.includes(tagValue)) {
     dog.error('已存在该 tag 值');
     _p(cyanPen`已经存在的 tag 值为：`);
 
     tagList.forEach(e => _p(`${randomPen`-`}  ${e}`));
-    await markVoluntaryWithdrawal(`tag 值 "${tag}" 已经存在于本地`);
+    await tryRemoveTag(tagValue);
   }
+}
+
+/**
+ * # 是否尝试移除已存在的标签
+ * @param tag 当前标记
+ */
+async function tryRemoveTag(tag: string) {
+  const tip = ['移除', '退出'];
+  const rm = await question({
+    text: `${tag} 标签已存在，是否移除`,
+    tip,
+  });
+
+  if (rm === tip[1]) {
+    await markVoluntaryWithdrawal(`好的，稍等撤回修改`);
+  }
+
+  await runOtherCode(
+    `git tag -d '${tag}' && git push origin --delete '${tag}'`,
+  );
+
+  await runOtherCode(
+    `git tag -d '${tag}' && git push origin --delete '${tag}'`,
+  );
 }

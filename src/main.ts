@@ -8,7 +8,7 @@
  * @copyright 2026 ©️ MrMudBean
  * @since 2026-01-15 11:09
  * @version 1.0.0
- * @lastModified 2026-06-27 23:41
+ * @lastModified 2026-09-08 10:57
  */
 import { question } from '@vvi/command';
 import { isFalse } from '@vvi/is';
@@ -60,8 +60,9 @@ export async function main(): Promise<void> {
   await gitBranch(); // 获取当前的分支情况
   dog.warn('当前分支情况判断完毕');
   await execFetchTag();
+  // 虽然不知道之前为什么要这么早判定 tag ，但我觉得肯定有一定道理
   if (!isFalse(commandParameters.tag)) {
-    dog('设置当前提交的 tag');
+    dog('检测当前提交的 tag');
     await checkTags();
   }
 
